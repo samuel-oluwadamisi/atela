@@ -5,7 +5,6 @@ const SignupScreen = () => {
     const router = useRouter()
   return (
     <>
-    <button className="text-[#6E5F54] text-sm"> ❮ Back </button>
         <h2 className='font-black text-2xl text-center'>Create Workspace</h2>
         <p className='text-[#6E5F54] text-sm text-center my-2'>Set up your factory account</p>
 
@@ -23,7 +22,7 @@ const SignupScreen = () => {
         <button onClick={ ()=> router.push('/signup/confirm')} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Create Workspace</button>
         </div>
 
-        <p className='text-[#6E5F54] text-sm text-center mt-4'>Already have a workspace? <a href="#" className='text-[#C1785A] font-bold'>Log in</a></p>
+        <p className='text-[#6E5F54] text-sm text-center mt-4'>Already have a workspace? <span onClick={()=> router.push('/login')} className='text-[#C1785A] cursor-pointer font-bold'>Log in</span></p>
             
     </>
   )

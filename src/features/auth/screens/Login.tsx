@@ -1,7 +1,10 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const LoginScreen = () => {
+
+    const router = useRouter()
   return (
     <div className='flex h-screen'>
         <div className='hidden md:block relative h-screen w-2/5 overflow-hidden'>
@@ -34,7 +37,7 @@ const LoginScreen = () => {
                     <button className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Access Dashboard</button>
                 </div>
 
-                <p className='text-[#6E5F54] text-sm text-center mt-4'>Don&apos;t have an account? <a href="#" className='text-[#C1785A] font-bold'>Create One</a></p>
+                <p className='text-[#6E5F54] text-sm text-center mt-4'>Don&apos;t have an account? <span onClick={()=> router.push('/signup')} className='text-[#C1785A] cursor-pointer font-bold'>Create One</span></p>
             </div>
             
         </div>

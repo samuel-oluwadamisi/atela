@@ -1,8 +1,11 @@
+import ConfigureScreen from '@/features/auth/screens/Configure'
 import React from 'react'
 
 const ConfigurePage = () => {
   return (
-    <div>ConfigurePage</div>
+    <div>
+      <ConfigureScreen />
+    </div>
   )
 }
 

@@ -27,7 +27,7 @@ const ConfirmScreen = () => {
 
           <div className="bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5 flex flex-col items-center">
             <ConfirmEmailForm />
-          <button onClick={ ()=> router.push('/signup/confirm')} className='py-5 w-9/10 bg-[#C1785A] mt-6 rounded-3xl text-white font-bold text-sm'>
+          <button onClick={ ()=> router.push('/signup/configure')} className='py-5 w-9/10 bg-[#C1785A] mt-6 rounded-3xl text-white font-bold text-sm'>
             Verify & Create Workspace
           </button>
 
