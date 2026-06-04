@@ -15,11 +15,11 @@ const LoginScreen = () => {
                     </div>
                     <p className='text-white font-poppins font-black text-2xl'>ATELA</p>
                 </div>
-                <p className='text-white font-bold text-xl max-w-[380px]'>The Single Source of Truth for your factory floor</p>
+        <p className='text-white font-bold text-xl max-w-[380px]'>The Single Source of Truth for your factory floor</p>
             </div>
         </div>
 
-        <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center mt-18 md:mt-34'>
+        <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center  mt-34'>
             <div>
                 <h2 className='font-black text-2xl text-center'>Welcome Back</h2>
                 <p className='text-[#6E5F54] text-sm text-center my-2'>Sign in to access your dashboard</p>
@@ -34,7 +34,7 @@ const LoginScreen = () => {
                     <button className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Access Dashboard</button>
                 </div>
 
-                <p className='text-[#6E5F54] text-sm text-center mt-4'>Don't have an account? <a href="#" className='text-[#C1785A] font-bold'>Create One</a></p>
+                <p className='text-[#6E5F54] text-sm text-center mt-4'>Don&apos;t have an account? <a href="#" className='text-[#C1785A] font-bold'>Create One</a></p>
             </div>
             
         </div>
