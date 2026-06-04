@@ -1,9 +1,10 @@
 
+import SignupScreen from '@/features/auth/screens/Signup'
 import React from 'react'
 
 const SignupPage = () => {
   return (
-    <div>SignupPage</div>
+    <div> <SignupScreen /> </div>
   )
 }
 
