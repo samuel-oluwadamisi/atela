@@ -22,7 +22,7 @@ const LoginScreen = () => {
             </div>
         </div>
 
-        <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center  mt-34'>
+        <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center  pt-34'>
             <div>
                 <h2 className='font-black text-2xl text-center'>Welcome Back</h2>
                 <p className='text-[#6E5F54] text-sm text-center my-2'>Sign in to access your dashboard</p>
