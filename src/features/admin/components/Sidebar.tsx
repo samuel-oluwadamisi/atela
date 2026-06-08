@@ -36,7 +36,7 @@ const Sidebar = () => {
                 routes.map((route, index) => {
                     const isActive = active(route.path)
                   return(  
-                    <Link href={route.path} key={index} className={`w-[227px] h-[49px] rounded-xl flex  gap-3 mt-1 cursor-pointer pt-3.5 px-4 ${isActive ? 'bg-[#C1785A]' : ''}`}>
+                    <Link href={route.path} key={index} className={`w-[227px] h-[49px] rounded-xl flex  gap-3 mt-1 cursor-pointer pt-3.5 px-4 transition-all delay-75 duration-500 ${isActive ? 'bg-[#C1785A]' : ''}`}>
                        <div> <Image src={route.image} alt={`${route.name}-icon`} width={18} height={18} /> </div>
                         <p className={`{ ${isActive ? 'text-white' : 'text-[#2A1F1A]' } text-sm font-bold`}>{route.name}</p>
                     </Link>

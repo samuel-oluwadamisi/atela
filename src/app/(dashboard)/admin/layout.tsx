@@ -7,9 +7,12 @@ export default function  AdminLayout({ children }: { children: React.ReactNode }
         <div className='w-1/5 h-full'>
             <Sidebar /> 
         </div>
-        <div className='w-4/5 px-5'>
+        <div className='w-4/5 bg-[#F7F4F0]'>
             <Navbar />
-            {children}
+            <div className='p-5'>
+             {children}
+            </div>
+            
         </div>
         
     </div>

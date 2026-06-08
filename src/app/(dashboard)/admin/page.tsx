@@ -1,8 +1,10 @@
-import React from 'react'
+import DashboardHomeScreen from '@/features/admin/dashboard/screens/DashboardHome'
 
 const AdminHomePage = () => {
   return (
-    <div>AdminHomePage</div>
+    <div>
+      <DashboardHomeScreen />
+    </div>
   )
 }
 
