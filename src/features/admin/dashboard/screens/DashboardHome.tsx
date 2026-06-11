@@ -2,6 +2,7 @@ import React from 'react'
 import InfoCard from '../components/InfoCard'
 import ProductionBottleneck from '../components/ProductionBottleneck'
 import ActionRequired from '../components/ActionRequired'
+import FloorStatus from '../components/FloorStatus'
 
 const DashboardHomeScreen = () => {
 
@@ -21,7 +22,10 @@ const DashboardHomeScreen = () => {
 
         <ProductionBottleneck />
 
-        <ActionRequired />
+        <div className='flex items-center gap-4 mt-3'>
+            <ActionRequired />
+            <FloorStatus />
+        </div>    
     </main>
   )
 }

@@ -36,7 +36,7 @@ const Navbar = () => {
 
               <div className=' mx-auto flex items-center justify-center my-1 md:my-2 border-2 border-[#FFFFFF] bg-[#2A1F1A] rounded-lg shadow-sm w-10 h-10 '>
                 <p className='text-white font-black text-sm'>AS</p> 
-            </div>
+              </div>
         </div>
     </nav>
   )

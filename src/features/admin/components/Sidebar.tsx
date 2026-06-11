@@ -1,7 +1,15 @@
 'use client'
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { TbActivityHeartbeat } from "react-icons/tb";
+import Image from "next/image";
+import { IconType } from "react-icons";
+
+type SidebarTypes = {
+    name: string
+    path: string
+    Icon: IconType
+}
 
 
 const Sidebar = () => {
@@ -10,13 +18,13 @@ const Sidebar = () => {
        if (path === '/admin') return pathname === '/admin'
     return pathname.startsWith(path)
   }
-    const routes = [ 
-        { name: 'Dashboard', path: '/admin', image: '/images/atela-logo.png' },
-        { name: 'Order Directory', path: '/admin/order-directory', image: '/images/atela-logo.png'  },
-        { name: 'Inventory', path: '/admin/inventory', image: '/images/atela-logo.png'  },
-        { name: 'Team Output', path: '/admin/team-output', image: '/images/atela-logo.png' },
-        {name: 'Settings', path: '/admin/settings', image: '/images/atela-logo.png' },
-        {name: 'Logout', path: '/admin/logout', image: '/images/atela-logo.png' },
+    const routes: SidebarTypes[] = [ 
+        { name: 'Dashboard', path: '/admin', Icon: TbActivityHeartbeat },
+        { name: 'Order Directory', path: '/admin/order-directory', Icon: TbActivityHeartbeat  },
+        { name: 'Inventory', path: '/admin/inventory', Icon: TbActivityHeartbeat  },
+        { name: 'Team Output', path: '/admin/team-output', Icon: TbActivityHeartbeat },
+        {name: 'Settings', path: '/admin/settings', Icon: TbActivityHeartbeat },
+        {name: 'Logout', path: '/admin/logout', Icon: TbActivityHeartbeat },
     ]
 
 
@@ -35,9 +43,10 @@ const Sidebar = () => {
             {
                 routes.map((route, index) => {
                     const isActive = active(route.path)
+                    const Icon = route.Icon
                   return(  
-                    <Link href={route.path} key={index} className={`w-[227px] h-[49px] rounded-xl flex  gap-3 mt-1 cursor-pointer pt-3.5 px-4 transition-all delay-75 duration-500 ${isActive ? 'bg-[#C1785A]' : ''}`}>
-                       <div> <Image src={route.image} alt={`${route.name}-icon`} width={18} height={18} /> </div>
+                    <Link href={route.path} key={index} className={`w-[227px] h-[49px] rounded-xl flex justify-start  gap-3 mt-1 cursor-pointer pt-3.5 px-4 transition-all delay-75 duration-500  ${isActive ? 'bg-[#C1785A]' : ''}`}>
+                       <div> <Icon className= {`{ ${isActive ? 'text-white' : 'text-black'} w-6 h-6 text-center`} /> </div>
                         <p className={`{ ${isActive ? 'text-white' : 'text-[#2A1F1A]' } text-sm font-bold`}>{route.name}</p>
                     </Link>
                   )

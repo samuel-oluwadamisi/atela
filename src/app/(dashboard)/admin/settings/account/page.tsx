@@ -1,8 +1,11 @@
-import React from 'react'
+import AccountScreen from '@/features/admin/settings/screens/Account'
+
 
 const SettingsAccountPage = () => {
   return (
-    <div>SettingsAccountPage</div>
+    <>
+      <AccountScreen />
+    </>
   )
 }
 
