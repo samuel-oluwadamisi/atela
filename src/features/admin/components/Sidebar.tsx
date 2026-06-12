@@ -2,6 +2,9 @@
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { TbActivityHeartbeat } from "react-icons/tb";
+import { GoStack } from "react-icons/go";
+import { PiCube } from "react-icons/pi";
+import { LuUsers, LuSettings, LuLogOut } from "react-icons/lu";
 import Image from "next/image";
 import { IconType } from "react-icons";
 
@@ -20,11 +23,11 @@ const Sidebar = () => {
   }
     const routes: SidebarTypes[] = [ 
         { name: 'Dashboard', path: '/admin', Icon: TbActivityHeartbeat },
-        { name: 'Order Directory', path: '/admin/order-directory', Icon: TbActivityHeartbeat  },
-        { name: 'Inventory', path: '/admin/inventory', Icon: TbActivityHeartbeat  },
-        { name: 'Team Output', path: '/admin/team-output', Icon: TbActivityHeartbeat },
-        {name: 'Settings', path: '/admin/settings', Icon: TbActivityHeartbeat },
-        {name: 'Logout', path: '/admin/logout', Icon: TbActivityHeartbeat },
+        { name: 'Order Directory', path: '/admin/order-directory', Icon: GoStack  },
+        { name: 'Inventory', path: '/admin/inventory', Icon: PiCube  },
+        { name: 'Team Output', path: '/admin/team-output', Icon: LuUsers },
+        {name: 'Settings', path: '/admin/settings', Icon: LuSettings },
+        {name: 'Logout', path: '/admin/logout', Icon: LuLogOut },
     ]
 
 

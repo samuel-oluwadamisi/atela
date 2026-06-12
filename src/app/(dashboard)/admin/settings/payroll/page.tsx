@@ -1,8 +1,10 @@
-import React from 'react'
+import PayrollScreen from '@/features/admin/settings/screens/Payroll'
 
 const SettingsPayrollPage = () => {
   return (
-    <div>SettingsPayrollPage</div>
+    <div>
+      <PayrollScreen />
+    </div>
   )
 }
 

@@ -3,6 +3,11 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { TbActivityHeartbeat } from "react-icons/tb";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { FiDollarSign, FiUser} from "react-icons/fi";
+import { LuShield } from "react-icons/lu";
+import { GoTrash } from "react-icons/go";
+
 
 const SettingsSidebar = () => {
 
@@ -15,11 +20,11 @@ const SettingsSidebar = () => {
 
     const routes = [
         {name: 'Workspace', path: '/admin/settings', Icon: TbActivityHeartbeat },
-        {name: 'Account', path: '/admin/settings/account', Icon: TbActivityHeartbeat},
-        {name: 'Notifications', path: '/admin/settings/notifications',Icon: TbActivityHeartbeat},
-        {name: "Payroll", path: '/admin/settings/payroll',Icon: TbActivityHeartbeat},
-        {name: 'Security', path: '/admin/settings/security',Icon: TbActivityHeartbeat},
-        {name: 'Danger Zone', path: '/admin/settings/danger-zone',Icon: TbActivityHeartbeat},
+        {name: 'Account', path: '/admin/settings/account', Icon: FiUser},
+        {name: 'Notifications', path: '/admin/settings/notifications',Icon: IoIosNotificationsOutline},
+        {name: "Payroll", path: '/admin/settings/payroll',Icon: FiDollarSign},
+        {name: 'Security', path: '/admin/settings/security',Icon: LuShield},
+        {name: 'Danger Zone', path: '/admin/settings/danger-zone',Icon: GoTrash},
     ]
 
   return (
