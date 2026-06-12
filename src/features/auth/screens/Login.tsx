@@ -34,7 +34,7 @@ const LoginScreen = () => {
                      <p className='text-[#6E5F54] font-bold text-xs mt-4'>Password/ Pin</p>
                     <input type="password" placeholder='••••••••' className='border-1 border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
 
-                    <button className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Access Dashboard</button>
+                    <button onClick={()=> router.push('/admin')} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Access Dashboard</button>
                 </div>
 
                 <p className='text-[#6E5F54] text-sm text-center mt-4'>Don&apos;t have an account? <span onClick={()=> router.push('/signup')} className='text-[#C1785A] cursor-pointer font-bold'>Create One</span></p>

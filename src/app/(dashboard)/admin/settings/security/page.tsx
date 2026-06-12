@@ -1,8 +1,11 @@
+import SecurityScreen from '@/features/admin/settings/screens/Security'
 import React from 'react'
 
 const SettingsSecurityPage = () => {
   return (
-    <div>SettingsSecurityPage</div>
+    <div>
+      <SecurityScreen />
+    </div>
   )
 }
 
