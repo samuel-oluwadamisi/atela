@@ -1,8 +1,11 @@
-import React from 'react'
+import TeamOutputScreen from '@/features/admin/team-output/screens/TeamOutputScreen'
+
 
 const TeamOutput = () => {
   return (
-    <div>TeamOutput</div>
+    <div>
+      <TeamOutputScreen />
+    </div>
   )
 }
 
