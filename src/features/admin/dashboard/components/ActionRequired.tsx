@@ -1,13 +1,10 @@
 'use client'
 import { ColumnDef } from "@tanstack/react-table"
 import { DataTable } from "../../components/DataTable"
+import { ReviewTypes } from "../../types/adminTypes"
 
 
-type ReviewTypes = {
-  code: string
-  dress: string
-  staff: string
-}
+
 
   export const columns: ColumnDef<ReviewTypes>[] = [
   {

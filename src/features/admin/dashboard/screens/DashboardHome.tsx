@@ -1,4 +1,4 @@
-import React from 'react'
+
 import InfoCard from '../components/InfoCard'
 import ProductionBottleneck from '../components/ProductionBottleneck'
 import ActionRequired from '../components/ActionRequired'

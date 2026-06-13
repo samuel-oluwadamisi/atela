@@ -42,7 +42,7 @@ const Sidebar = () => {
             </div>
         </div>
 
-        <div>
+        <div className="mt-3">
             {
                 routes.map((route, index) => {
                     const isActive = active(route.path)
