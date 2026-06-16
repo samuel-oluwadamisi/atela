@@ -20,10 +20,10 @@ import { ReviewTypes } from "../../types/adminTypes"
     header: "Staff",
   },
   {
-  id: "actions",           // no accessorKey — this is a custom column
+  id: "actions",         
   header: "Actions",
   cell: ({ row }) => {
-    const user = row.original   // the full data object for this row
+    const user = row.original  
     return (
       <div className="flex items-center justify-center rounded-xl gap-2 w-16 h-10 bg-white border border-[#E8E1D9]">
         <button className="cursor-pointer text-xs font-bold text-[#2A1F1A]">Review</button>
@@ -42,7 +42,7 @@ const data:ReviewTypes[] =[
 const ActionRequired = () => {
   return (
     <main className="w-2/3">
-      <div className="flex items-center justify-between mb-1 p-2">
+      <div className="flex items-center justify-between px-3">
         <p className="text-lg font-black text-[#2A1F1A]">Action Required</p>
         <p className="text-xs font-bold text-[#C1785A]">View All Inbox </p>
       </div>

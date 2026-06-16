@@ -22,7 +22,7 @@ const DashboardHomeScreen = () => {
 
         <ProductionBottleneck />
 
-        <div className='flex items-center gap-4 mt-3'>
+        <div className='flex mt-5 gap-4'>
             <ActionRequired />
             <FloorStatus />
         </div>    

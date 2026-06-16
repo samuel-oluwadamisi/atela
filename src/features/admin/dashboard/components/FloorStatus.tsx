@@ -11,9 +11,9 @@ const FloorStatus = () => {
         {staff: "Tailoring", bgColor: 'bg-[#4A7C591A]', color: '#4A7C59', number: 2, Icon: RiStackLine},
     ]
   return (
-    <main className=' w-1/3 mt-3'>
+    <main className=' w-1/3 flex flex-col'>
         <p className='text-[#2A1F1A] text-lg font-black mb-1 pl-2'>Floor Status</p>
-        <div className='bg-white border border-[#E8E1D9] w-full h-full rounded-4xl p-4'>
+        <div className='flex-1 flex flex-col justify-center bg-white border border-[#E8E1D9] w-full h-full rounded-4xl p-5'>
            { staffStatus.map((data, index) =>(
             <FloorStatusTab {...data} key={index} />
             ))}

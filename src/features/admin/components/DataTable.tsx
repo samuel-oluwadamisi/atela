@@ -23,7 +23,7 @@ interface DataTableProps<TData, TValue> {
   button?: {
     show: boolean;
     label: string;
-    fn: ()=>void
+    func: ()=>void
   }
 }
 
@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
         </div>
       )}
 
-     { button && <button className="bg-[#2A1F1A] ml-auto flex items-center justify-center gap-1 w-30 h-10 text-white text-xs rounded-xl text-center"> <span className=" text-base text-center">+</span>{button.label} </button>}
+     { button && <button onClick={()=>button.func() } className="bg-[#2A1F1A] ml-auto flex items-center justify-center gap-1 w-30 h-10 text-white text-xs rounded-xl text-center"> <span className=" text-base text-center">+</span>{button.label} </button>}
 
        </div>
 

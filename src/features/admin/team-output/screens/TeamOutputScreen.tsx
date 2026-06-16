@@ -2,15 +2,8 @@
 import { useState } from "react"
 import { ColumnDef } from "@tanstack/react-table"
 import { DataTable } from "../../components/DataTable"
-import { InventoryTypes } from "../../inventory/types/inventoryTypes";
 
 
-
-type ColorTypes = {
-    bg: string;
-    text: string;
-    dot: string
-}
 
 export type StaffMember = {
   name: string;
@@ -24,7 +17,7 @@ export type StaffMember = {
 
   export const columns: ColumnDef<StaffMember>[] = [
     {
-      accessorKey: "name",       // maps to user.name
+      accessorKey: "name",     
       header: "Name",
       cell: ({getValue }) => {
         const name = getValue<string>()
@@ -47,35 +40,50 @@ export type StaffMember = {
       header: "Role",
     },
       {
-      accessorKey: "unit",
-      header: "Unit",
+      accessorKey: "payType",
+      header: "Pay",
     },
       {
-      accessorKey: "status",
-      header: "Status",
+      accessorKey: "activeTasks",
+      header: "Active Task",
+      cell: ({getValue})=>{
+        const task = getValue<number>()
+        return(
+            <div className="flex items-center justify-center">
+                <p>{task}</p>
+            </div>
+        )
+      }
+    },
+      {
+      accessorKey: "outputToday",
+      header: "Output(Today)",
+      cell: ({getValue})=>{
+        const output = getValue<number>()
+        return(
+             <div className="flex items-center justify-center">
+                <p>{output}</p>
+            </div>
+        )
+      }
+    },
+      {
+      accessorKey: "efficiency",
+      header: "Efficiency",
       cell: ({ getValue }) => {
-    const stage = getValue<string>()
+    const efficiency = getValue<number>()
 
-    const colors: Record<string, ColorTypes> = {
-      Healthy: { 
-        bg: "bg-[#4A7C591A]", 
-        text: "text-[#4A7C59]",
-        dot: "bg-[#4A7C59]"
-    },
-      "Low Stock" :{ 
-        bg: "bg-[#D4A3731A]", 
-        text: "text-[#D4A373]",
-        dot: "bg-[#D4A373]"
-    },
-        
-    }
-
-    const colorClass = colors[stage] ?? "bg-[#F3F4F6] text-[#374151]"
+    const getEfficiencyColor = (efficiency: number) => {
+        if (efficiency <= 50) return "text-red-500";
+        if (efficiency <= 70) return "text-orange-500";
+        return "text-green-500";
+     };
+    const colorClass = getEfficiencyColor(efficiency) ?? "text-[#374151]"
 
     return (
-      <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${colorClass.text} ${colorClass.bg}`}>
-        <div className={`w-2 h-2 rounded-full ${colorClass.dot} `}></div>{stage}
-      </div>
+      <p className={` text-xs font-semibold ${colorClass} `}>
+        {efficiency}%
+      </p>
     )
   }
     }
