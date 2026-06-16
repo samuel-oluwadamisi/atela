@@ -22,9 +22,9 @@ const SettingsSidebar = () => {
         {name: 'Workspace', path: '/admin/settings', Icon: TbActivityHeartbeat },
         {name: 'Account', path: '/admin/settings/account', Icon: FiUser},
         {name: 'Notifications', path: '/admin/settings/notifications',Icon: IoIosNotificationsOutline},
-        {name: "Payroll", path: '/admin/settings/payroll',Icon: FiDollarSign},
+        {name: "Payments", path: '/admin/settings/payroll',Icon: FiDollarSign},
         {name: 'Security', path: '/admin/settings/security',Icon: LuShield},
-        {name: 'Danger Zone', path: '/admin/settings/danger-zone',Icon: GoTrash},
+        {name: 'Advanced', path: '/admin/settings/danger-zone',Icon: GoTrash},
     ]
 
   return (

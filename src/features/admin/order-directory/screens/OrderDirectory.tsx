@@ -189,7 +189,7 @@ const OrderDirectoryScreen = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-bold text-[#6E5F54]">
-                  Volume
+                  Quantity
                 </label>
                 <input
                   type="text"
