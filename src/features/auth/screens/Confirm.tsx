@@ -1,50 +1,101 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { ConfirmEmailForm } from '../components/ConfirmEmailForm'
-import Image from 'next/image'
+import { useRouter } from "next/navigation";
+// import { ConfirmEmailForm } from "../components/ConfirmEmailForm";
+import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import { useVerifyEmail } from "../hooks/useAuth";
+import { useState } from "react";
 
 const ConfirmScreen = () => {
-  const router = useRouter()
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
+  const [ form, setForm] = useState({
+     email: email ?? '',
+    code: '' 
+    
+  })
+
+  const { mutate } = useVerifyEmail();
+
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate(form, {
+      onSuccess: ()=> {
+        router.push(`/dashboard`);
+      }
+    })
+    
+  };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
-        <>
-          <button onClick={() => router.back()} className="text-[#6E5F54] text-sm">
-            ❮ Back
-          </button>
+    <>
+      <form onSubmit={handleSubmit}>
+        <button
+          onClick={() => router.back()}
+          className="text-[#6E5F54] text-sm"
+        >
+          ❮ Back
+        </button>
 
-          <div className='flex flex-col items-center '>
-
-          
-            <div className='flex items-center justify-center my-2 border border-[#E8E1D9] rounded-full shadow-sm w-16 h-16 '>
-                <Image src={'/images/brown-check.png'} alt='Brown-Check' width={32} height={32} />
-            </div>
+        <div className="flex flex-col items-center ">
+          <div className="flex items-center justify-center my-2 border border-[#E8E1D9] rounded-full shadow-sm w-16 h-16 ">
+            <Image
+              src={"/images/brown-check.png"}
+              alt="Brown-Check"
+              width={32}
+              height={32}
+            />
+          </div>
           <h2 className="font-black text-3xl text-[#2A1F1A]"> Verify Email</h2>
           <p className="text-[#6E5F54] font-medium text-sm  mt-2">
-            We've sent a 6-digit security code to
+            We`&apos;`ve sent a 6-digit security code to
           </p>
-          <p className='font-bold text-sm'>user@email.com</p>
+          <p className="font-bold text-sm">user@email.com</p>
 
           <div className="bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5 flex flex-col items-center">
-            <ConfirmEmailForm />
-          <button onClick={ ()=> router.push('/signup/configure')} className='py-5 w-9/10 bg-[#C1785A] mt-6 rounded-3xl text-white font-bold text-sm'>
-            Verify & Create Workspace
-          </button>
+            {/* <ConfirmEmailForm /> */}
+                      <p className="text-[#6E5F54] font-bold text-xs">Factory Name</p>
+          <input
+          name="code"
+            value={form.code}
+            onChange={handleChange}
+            type="text"
+            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+          />
+            <button
+            type="submit"
+              onClick={() => router.push("/signup/configure")}
+              className="py-5 w-9/10 bg-[#C1785A] mt-6 rounded-3xl text-white font-bold text-sm"
+            >
+              Verify & Create Workspace
+            </button>
 
-        <button
-        onClick={() => {
-          /* trigger resend API call */
-        }}
-        className="text-xs mt-3 font-bold text-[#6E5F54] hover:underline"
-      >
-        Didn&apos;t receive it? <span className='text-sm text-[#C1785A] font-medium'>Resend Code</span>
-      </button>
+            <button
+              onClick={() => {
+                /* trigger resend API call */
+              }}
+              className="text-xs mt-3 font-bold text-[#6E5F54] hover:underline"
+            >
+              Didn&apos;t receive it?{" "}
+              <span className="text-sm text-[#C1785A] font-medium">
+                Resend Code
+              </span>
+            </button>
           </div>
+        </div>
+      </form>
+    </>
+  );
+};
 
-    </div>
-
-        </>
-  )
-}
-
-export default ConfirmScreen
+export default ConfirmScreen;

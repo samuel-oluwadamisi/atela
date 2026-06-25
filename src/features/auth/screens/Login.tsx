@@ -1,15 +1,48 @@
 'use client'
 import Image from 'next/image'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLogin } from '../hooks/useAuth'
+import { loginSchema } from '../schema/loginSchema'
 
 const LoginScreen = () => {
 
+    const {mutate, isPending} = useLogin()
+    const [form, setForm ] = useState({
+        email: '',
+         password: ''
+    })
+    const [formError, setFormError] = useState<string | null >()
     const router = useRouter()
+
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=> {
+        e.preventDefault()
+
+        const result = loginSchema.safeParse(form)
+
+           if(!result.success){
+      setFormError(result.error.issues[0].message);
+      return
+    }
+
+        mutate(result.data ,{
+            onSuccess: ()=> {
+                router.push('/admin')
+            }
+        } )
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
   return (
     <div className='flex h-screen'>
         <div className='hidden md:block relative h-screen w-2/5 overflow-hidden'>
             <Image src={'/images/loginImage.jpg'} alt="Login-image" fill className='object-top'/>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#994C00] to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#994C00] to-transparent" />
 
             <div className='absolute bottom-14 left-20 z-10'>
                 <div  className="flex items-center gap-2 mb-2">
@@ -18,7 +51,7 @@ const LoginScreen = () => {
                     </div>
                     <p className='text-white font-poppins font-black text-2xl'>ATELA</p>
                 </div>
-        <p className='text-white font-bold text-xl max-w-[380px]'>The Single Source of Truth for your factory floor</p>
+        <p className='text-white font-bold text-xl max-w-95'>The Single Source of Truth for your factory floor</p>
             </div>
         </div>
 
@@ -27,15 +60,26 @@ const LoginScreen = () => {
                 <h2 className='font-black text-2xl text-center'>Welcome Back</h2>
                 <p className='text-[#6E5F54] text-sm text-center my-2'>Sign in to access your dashboard</p>
 
-                <div className='bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5'>
-                    <p className='text-[#6E5F54] font-bold text-xs'>Admin Email</p>
-                    <input type="text" placeholder='admin@fashionhouse.com' className='border-1 border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
+               <form onSubmit={handleSubmit}>
+                    <div className='bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5'>
+                        <p className='text-[#6E5F54] font-bold text-xs'>Admin Email</p>
+                        <input
+                        name='email'
+                        value={form.email}
+                        onChange={handleChange}
+                         type="text" placeholder='admin@fashionhouse.com' className='border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
 
-                     <p className='text-[#6E5F54] font-bold text-xs mt-4'>Password/ Pin</p>
-                    <input type="password" placeholder='••••••••' className='border-1 border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
+                        <p className='text-[#6E5F54] font-bold text-xs mt-4'>Password/ Pin</p>
+                        <input
+                        name='password'
+                        value={form.password}
+                        onChange={handleChange}
+                         type="text" placeholder='••••••••' className='border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
 
-                    <button onClick={()=> router.push('/admin')} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>Access Dashboard</button>
-                </div>
+                        <button type='submit' disabled= { isPending} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>{ isPending ? 'Loading...': 'Access Dashboard' } </button>
+                    </div>
+
+                </form>
 
                 <p className='text-[#6E5F54] text-sm text-center mt-4'>Don&apos;t have an account? <span onClick={()=> router.push('/signup')} className='text-[#C1785A] cursor-pointer font-bold'>Create One</span></p>
             </div>

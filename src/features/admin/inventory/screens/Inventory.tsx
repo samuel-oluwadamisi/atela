@@ -69,7 +69,7 @@ const InventoryScreen = () => {
     <>
     <div className='flex items-center justify-between'>
         <p className='font-black text-[#2A1F1A] text-lg '>Raw Materials</p>
-        <button className="bg-[#2A1F1A] ml-auto flex items-center justify-center gap-1 w-30 h-10 text-white font-bold text-xs rounded-xl text-center"> <span className=" text-base text-center">+</span>Log Material </button>
+        <button className="bg-[#2A1F1A] ml-auto flex items-center justify-center gap-1 w-30 h-10 text-white font-bold text-xs rounded-xl text-center"> <span className=" text-base text-center">+</span>Add Inventory </button>
     </div>
 
     <div>

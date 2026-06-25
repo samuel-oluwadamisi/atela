@@ -18,7 +18,7 @@ export default function SignupLayout({ children}: { children: React.ReactNode })
                   </div>
             </div>
 
-            <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center pt-12 md:pt-30'>
+            <div className='bg-[#F7F4F0] w-full md:w-3/5 flex  justify-center pt-15'>
             {children}
             </div> 
 
