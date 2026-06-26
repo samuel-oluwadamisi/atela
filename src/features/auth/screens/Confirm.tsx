@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useVerifyEmail } from "../hooks/useAuth";
+import { useResendOtp, useVerifyEmail } from "../hooks/useAuth";
 import { useState } from "react";
 import { verifyOtpSchema } from "../schema/verifyOtpSchema";
 // import { ConfirmEmailForm } from "../components/ConfirmEmailForm";
@@ -39,6 +39,8 @@ const ConfirmScreen = ({ email }: Props) => {
       },
     });
   };
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({
@@ -93,17 +95,7 @@ const ConfirmScreen = ({ email }: Props) => {
               { isPending ? 'Loading' : 'Verify & Create Workspace'}
             </button>
 
-            <button
-              onClick={() => {
-                /* trigger resend API call */
-              }}
-              className="text-xs mt-3 font-bold text-[#6E5F54] hover:underline"
-            >
-              Didn&apos;t receive it?{" "}
-              <span className="text-sm text-[#C1785A] font-medium">
-                Resend Code
-              </span>
-            </button>
+
           </div>
         </div>
       </form>

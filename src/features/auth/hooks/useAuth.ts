@@ -37,7 +37,13 @@ export function useVerifyEmail(){
 
 export function useResendOtp(){
     return useMutation({
-        mutationFn: (payload: ResendOtp)=> resendOtp(payload)
+        mutationFn: (payload: ResendOtp)=> resendOtp(payload),
+        onSuccess: (data)=>{
+            toast.success(data.data.message)
+        },
+        onError: (error)=>{
+            toast.error(getErrorMessage(error))
+        }
     })
 }
 
