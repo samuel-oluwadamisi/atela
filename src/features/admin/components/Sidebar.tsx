@@ -7,6 +7,9 @@ import { PiCube } from "react-icons/pi";
 import { LuUsers, LuSettings, LuLogOut } from "react-icons/lu";
 import Image from "next/image";
 import { IconType } from "react-icons";
+import { useAuth } from "@/shared/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 type SidebarTypes = {
     name: string
@@ -21,13 +24,21 @@ const Sidebar = () => {
        if (path === '/admin') return pathname === '/admin'
     return pathname.startsWith(path)
   }
+
+  const {logout} = useAuth()
+  const router = useRouter()
+  const handleLogout = ()=> {
+    logout()
+    toast.success('Logged Out Successfully')
+    router.push('/login')
+  }
+
     const routes: SidebarTypes[] = [ 
         { name: 'Dashboard', path: '/admin', Icon: TbActivityHeartbeat },
         { name: 'Order Directory', path: '/admin/order-directory', Icon: GoStack  },
         { name: 'Inventory', path: '/admin/inventory', Icon: PiCube  },
         { name: 'Team Output', path: '/admin/team-output', Icon: LuUsers },
-        {name: 'Settings', path: '/admin/settings', Icon: LuSettings },
-        {name: 'Logout', path: '/admin/logout', Icon: LuLogOut },
+        {name: 'Settings', path: '/admin/settings', Icon: LuSettings }
     ]
 
 
@@ -55,6 +66,11 @@ const Sidebar = () => {
                   )
             })
             }
+
+            <div onClick={()=> handleLogout()}  className='w-[227px] h-[49px] rounded-xl flex justify-start  gap-3 mt-1 cursor-pointer pt-3.5 px-4'>
+                <div> <LuLogOut className= 'text-black w-6 h-6 text-center' /> </div>
+                <p className='text-[#2A1F1A] text-sm font-bold'>Logout</p>
+            </div>
 
         </div>
 
