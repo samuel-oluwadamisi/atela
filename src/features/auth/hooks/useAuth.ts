@@ -4,6 +4,7 @@ import { signup,  verifyEmail, resendOtp, login, } from "../api/auth.api";
 import { SignupPayload, VerifyEmailPayload, ResendOtp, LoginType } from "../api/auth.api";
 import {toast} from 'react-toastify'
 import { getErrorMessage } from "@/shared/lib/api/apiErrorHelper";
+import { useAuth } from "@/shared/context/AuthContext";
 
 
 export function useSignup(){
@@ -21,11 +22,13 @@ export function useSignup(){
 
 export function useVerifyEmail(){
      const router = useRouter();
+     const {login: setAuthToken} = useAuth()
     //  const queryClient = useQueryClient()
     return useMutation({
        
         mutationFn: (payload: VerifyEmailPayload)=> verifyEmail(payload),
-        onSuccess: ()=>{
+        onSuccess: (data)=>{
+            setAuthToken(data.data.access_token)
              // queryClient.invalidateQueries({ queryKey: ['me'] });
             router.push('/dashboard')
         }
@@ -41,11 +44,12 @@ export function useResendOtp(){
 
 export function useLogin(){
     const router = useRouter()
+    const {login: setAuthToken} = useAuth()
     // const queryClient = useQueryClient()
     return useMutation({
         mutationFn: (payload: LoginType)=> login(payload),
         onSuccess: (data)=> {
-            localStorage.setItem('access_token', data.data.access_token)
+            setAuthToken(data.data.access_token)
             toast.success(data.data.message)
             // queryClient.invalidateQueries({ queryKey: ['me'] });
             router.push('/dashboard')
