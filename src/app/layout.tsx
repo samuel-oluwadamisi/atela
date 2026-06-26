@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { QueryProvider } from "@/features/auth/context/QueryProvider";
-import { AuthProvider } from "@/features/auth/context/AuthContext";
+import { QueryProvider } from "@/shared/context/QueryProvider";
+import { AuthProvider } from "@/shared/context/AuthContext";
 import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({

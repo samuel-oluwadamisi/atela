@@ -25,6 +25,8 @@ const LoginScreen = () => {
       return
     }
 
+        setFormError(null)
+
         mutate(result.data ,{
             onSuccess: ()=> {
                 router.push('/admin')
@@ -75,6 +77,8 @@ const LoginScreen = () => {
                         value={form.password}
                         onChange={handleChange}
                          type="text" placeholder='••••••••' className='border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none'  />
+
+                         {formError && <p className="text-red-500 text-xs font-bold mt-2">{formError}</p>}
 
                         <button type='submit' disabled= { isPending} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>{ isPending ? 'Loading...': 'Access Dashboard' } </button>
                     </div>
