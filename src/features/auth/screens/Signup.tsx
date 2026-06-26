@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSignup } from "../hooks/useAuth";
 import { signupSchema } from "../schema/signupSchema";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const SignupScreen = () => {
 
@@ -16,6 +17,8 @@ const SignupScreen = () => {
     currency: 'NGN'
   });
   const [formError, setFormError] = useState<string | null >(null)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const router = useRouter();
 
@@ -78,26 +81,54 @@ const SignupScreen = () => {
             placeholder="admin@fashionhouse.com"
             className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
+          
 
           <p className="text-[#6E5F54] font-bold text-xs mt-3">Password/ Pin</p>
+          <div className="relative">
           <input
           name="password"
             value={form.password}
             onChange={handleChange}
-            type="password"
+            type={showPassword ? 'text' : "password"}
             placeholder="••••••••"
-            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className=" border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
+          {showPassword ? (
+    <BsEye
+      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+      onClick={() => setShowPassword(!showPassword)}
+    />
+  ) : (
+    <BsEyeSlash
+      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+      onClick={() => setShowPassword(!showPassword)}
+    />
+  )}
+        </div>
 
-          <p className="text-[#6E5F54] font-bold text-xs mt-3">Confirm Password</p>
+
+        <p className="text-[#6E5F54] font-bold text-xs mt-3">Confirm Password</p>
+        <div className="relative">
           <input
           name="confirmPassword"
             value={form.confirmPassword}
             onChange={handleChange}
-            type="password"
+            type={showConfirmPassword ? 'text' : "password"}
             placeholder="••••••••"
             className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
+            {showConfirmPassword ? (
+    <BsEye
+      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    />
+  ) : (
+    <BsEyeSlash
+      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    />
+  )}
+          </div>
 
           <p className="text-[#6E5F54] font-bold text-xs mt-3">Team Size</p>
           <input
