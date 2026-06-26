@@ -1,18 +1,21 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-// import { ConfirmEmailForm } from "../components/ConfirmEmailForm";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useVerifyEmail } from "../hooks/useAuth";
 import { useState } from "react";
+// import { ConfirmEmailForm } from "../components/ConfirmEmailForm";
 
-const ConfirmScreen = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
-  const [ form, setForm] = useState({
-     email: email ?? '',
+type Props = {
+    email: string
+}
+
+const ConfirmScreen = ({email}: Props) => {
+  
+
+    const router = useRouter();
+      const [ form, setForm] = useState({
+     email: email,
     code: '' 
     
   })
@@ -37,9 +40,10 @@ const ConfirmScreen = () => {
     }));
   };
 
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
         <button
           onClick={() => router.back()}
           className="text-[#6E5F54] text-sm"
@@ -64,7 +68,7 @@ const ConfirmScreen = () => {
 
           <div className="bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5 flex flex-col items-center">
             {/* <ConfirmEmailForm /> */}
-                      <p className="text-[#6E5F54] font-bold text-xs">Factory Name</p>
+              <p className="text-[#6E5F54] font-bold text-xs">Factory Name</p>
           <input
           name="code"
             value={form.code}
