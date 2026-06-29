@@ -47,7 +47,8 @@ API.interceptors.response.use(
 
     const isAuthEndpoint =
       error.config?.url?.includes("/auth/login") ||
-      error.config?.url?.includes("/auth/signup");
+      error.config?.url?.includes("/auth/signup") || 
+      error.config?.url.includes("auth/confirm");
       
     if (error.response?.status === 401 && !isAuthEndpoint) {
       if (typeof window !== "undefined") {

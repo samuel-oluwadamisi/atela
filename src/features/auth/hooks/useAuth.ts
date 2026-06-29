@@ -29,8 +29,13 @@ export function useVerifyEmail(){
         mutationFn: (payload: VerifyEmailPayload)=> verifyEmail(payload),
         onSuccess: (data)=>{
             setAuthToken(data.data.access_token)
+            toast.success(data.data.message)
              // queryClient.invalidateQueries({ queryKey: ['me'] });
             router.push('/dashboard')
+        },
+        onError: (error)=> {
+            toast.error(getErrorMessage(error))
+
         }
     })
 }
