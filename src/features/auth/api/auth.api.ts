@@ -1,3 +1,4 @@
+import { ApiEnvelope } from "@/shared/lib/api/apiResponseTypeEnvelope";
 import { API } from "@/shared/lib/api/axios";
 
 
@@ -30,22 +31,26 @@ export type LoginType = {
     password: string
 }
 
+export type LoginResponse = ApiEnvelope<{
+    accessToken: string;
+    message: string;
+}>
 export async function signup (payload: SignupPayload){
-    const data = await API.post('/auth/register-workspace', payload)
+    const {data} = await API.post('/auth/register-workspace', payload)
     return data
 }
 
 export async function verifyEmail(payload:VerifyEmailPayload){
-    const data = await API.post('/auth/verify-email', payload)
+    const {data} = await API.post('/auth/verify-email', payload)
     return data 
 }
 
 export async function resendOtp(payload: ResendOtp){
-    const data = await API.post('auth/resend-otp', payload)
+    const {data} = await API.post('auth/resend-otp', payload)
     return data 
 }
 
 export async function login(payload:LoginType){
-    const data = await API.post('/auth/login', payload)
-    return data
+    const {data} = await API.post<LoginResponse>('/auth/login', payload)
+    return data.data
 }

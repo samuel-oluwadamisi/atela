@@ -1,17 +1,18 @@
 'use client'
 import Image from 'next/image'
 import { usePathname } from "next/navigation"
+import { useGetUser } from '@/features/user/hooks/useUser'
 
 const Navbar = () => {
 
+    const {data: user} = useGetUser()
     const pathname = usePathname()
     const getPageTitle = () => {
       const segments = pathname.split('/').filter(Boolean)
-      // ['admin'] or ['admin', 'orders'] or ['admin', 'orders', '123']
 
-      const afterAdmin = segments[1] // index 0 is 'admin', index 1 is what you want
+      const afterAdmin = segments[1] 
 
-      if (!afterAdmin) return 'Dashboard' // on /admin exactly
+      if (!afterAdmin) return 'Dashboard'
 
       // Capitalise first letter
       return afterAdmin.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
@@ -21,7 +22,7 @@ const Navbar = () => {
     <nav className='flex items-center justify-between h-20 bg-white px-5 w-full border-b border-b-[#E8E1D9]'>
         <div>
         <p className='text-[#2A1F1A] text-xl font-black'>{getPageTitle()}</p>
-        <p className='text-[#6E5F54] text-xs'>Monday, 1 June 2026. Arnass' Factory Floor</p>
+        <p className='text-[#6E5F54] text-xs'>Monday, 1 June 2026. {user?.tenant?.tenantName} Factory Floor</p>
         </div>
 
 

@@ -17,24 +17,24 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const TOKEN_KEY = "access_token";
 
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() => {
   if (typeof window === "undefined") return null;
-  return localStorage.getItem(TOKEN_KEY);
+  return localStorage.getItem('access_token');
 });
 
 
 
   function login(newToken: string) {
-    localStorage.setItem(TOKEN_KEY, newToken);
+    localStorage.setItem('access_token', newToken);
     setToken(newToken);
+    console.log("auth login response:", newToken);
   }
 
   function logout() {
-    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem('access_token');
     setToken(null);
   }
 
