@@ -5,7 +5,7 @@ import { useGetUser } from '@/features/user/hooks/useUser'
 
 const Navbar = () => {
 
-    const {data: user} = useGetUser()
+    const {data: user, isPending, isError, error} = useGetUser()
     const pathname = usePathname()
     const getPageTitle = () => {
       const segments = pathname.split('/').filter(Boolean)
@@ -17,12 +17,14 @@ const Navbar = () => {
       // Capitalise first letter
       return afterAdmin.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
     }
+    const name = user?.tenant.tenantName
+    const initials = name?.split(' ').map((word)=> word[0])
 
   return (
     <nav className='flex items-center justify-between h-20 bg-white px-5 w-full border-b border-b-[#E8E1D9]'>
         <div>
         <p className='text-[#2A1F1A] text-xl font-black'>{getPageTitle()}</p>
-        <p className='text-[#6E5F54] text-xs'>Monday, 1 June 2026. {user?.tenant?.tenantName} Factory Floor</p>
+        <p className='text-[#6E5F54] text-sm font-black'><span className='text-xs font-medium'>Monday, 1 June 2026. </span> {isPending? '...' : name} </p>
         </div>
 
 
@@ -36,7 +38,7 @@ const Navbar = () => {
             </div>
 
               <div className=' mx-auto flex items-center justify-center my-1 md:my-2 border-2 border-[#FFFFFF] bg-[#2A1F1A] rounded-lg shadow-sm w-10 h-10 '>
-                <p className='text-white font-black text-sm'>AS</p> 
+               {isError ? 'error' : <span className='text-white font-black text-sm'>{isPending? '...' : initials}</span> }
               </div>
         </div>
     </nav>

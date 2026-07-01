@@ -56,7 +56,7 @@ API.interceptors.response.use(
         // We redirect with a hard navigation (not router.push) because
         // this code runs outside React's render tree — there's no router
         // instance available here. window.location is the reliable option.
-        // window.location.href = "/login";
+        window.location.href = "/login";
       }
     }
     // IMPORTANT: always re-throw the error. If we swallow it here,
