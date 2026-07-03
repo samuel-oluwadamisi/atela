@@ -5,7 +5,7 @@ import { useGetUser } from '@/features/user/hooks/useUser'
 
 const Navbar = () => {
 
-    const {data: user, isPending, isError, error} = useGetUser()
+    const {data: user, isPending, isError} = useGetUser()
     const pathname = usePathname()
     const getPageTitle = () => {
       const segments = pathname.split('/').filter(Boolean)

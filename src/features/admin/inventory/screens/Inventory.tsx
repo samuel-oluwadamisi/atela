@@ -132,7 +132,7 @@ const InventoryScreen = () => {
 
           <form className="flex flex-col gap-4 w-full">
             <div className="flex flex-col gap-1 mt-3">
-              <label className="text-xs font-bold text-[#6E5F54]">Name</label>
+              <label className="text-xs font-bold text-[#6E5F54]">Material Type</label>
               <input
                 type="text"
                 placeholder="e.g. Chiffon"
@@ -152,7 +152,7 @@ const InventoryScreen = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-[#6E5F54]">Stock</label>
+              <label className="text-xs font-bold text-[#6E5F54]">No of Stock</label>
               <input
                 type="number"
                 className="border border-[#E8E1D9] bg-[#F7F4F0] rounded-xl px-3 py-2 text-sm text-[#2A1F1A] font-bold placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold outline-none focus:border-[#2A1F1A] transition-colors"

@@ -49,7 +49,7 @@ export async function resendOtp(payload: ResendOtp){
     const {data} = await API.post('auth/resend-otp', payload)
     return data 
 }
-
+  
 export async function login(payload:LoginType){
     const {data} = await API.post<LoginResponse>('/auth/login', payload)
     return data.data

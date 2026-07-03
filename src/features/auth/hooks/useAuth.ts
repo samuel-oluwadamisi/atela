@@ -31,7 +31,7 @@ export function useVerifyEmail(){
         onSuccess: (data)=>{
             setAuthToken(data.accessToken)
             toast.success(data.message)
-             queryClient.fetchQuery({ queryKey: ['profile'] });
+             queryClient.invalidateQueries({ queryKey: ['profile'] });
             router.push('/dashboard')
         },
         onError: (error)=> {
@@ -45,7 +45,7 @@ export function useResendOtp(){
     return useMutation({
         mutationFn: (payload: ResendOtp)=> resendOtp(payload),
         onSuccess: (data)=>{
-            toast.success(data.message)
+            toast.success(data.data.message)
         },
         onError: (error)=>{
             toast.error(getErrorMessage(error))
@@ -63,6 +63,7 @@ export function useLogin(){
         onSuccess: (data)=> {
             setAuthToken(data.accessToken)
             toast.success(data.message)
+            queryClient.invalidateQueries({ queryKey: ['profile'] });
             router.push('/dashboard')
         },
         onError: (error) => {
