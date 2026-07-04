@@ -42,7 +42,7 @@ export async function signup (payload: SignupPayload){
 
 export async function verifyEmail(payload:VerifyEmailPayload){
     const {data} = await API.post('/auth/verify-email', payload)
-    return data 
+    return data.data 
 }
 
 export async function resendOtp(payload: ResendOtp){
