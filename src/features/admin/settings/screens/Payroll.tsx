@@ -8,7 +8,7 @@ const PayrollScreen = () => {
     <>
       <div className="bg-white border border-[#E8E1D9] rounded-4xl p-8">
         <p className="font-black text-[17px] text-[#2A1F1A]">
-          Payroll Defaults
+          Payment Defaults
         </p>
         <p className="font-medium text-xs text-[#6E5F54]">
           Set default compensation rates for task assignments. These can be
