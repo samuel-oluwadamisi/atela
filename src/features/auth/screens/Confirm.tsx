@@ -72,11 +72,11 @@ const ConfirmScreen = ({ email }: Props) => {
           <p className="text-[#6E5F54] font-medium text-sm  mt-2">
             We`&apos;`ve sent a 6-digit security code to
           </p>
-          <p className="font-bold text-sm">user@email.com</p>
+          <p className="font-bold text-sm">{email}</p>
 
           <div className="bg-white w-90 md:w-105 p-5 md:p-7 rounded-[40px] mt-5 flex flex-col items-center">
             {/* <ConfirmEmailForm /> */}
-            <p className="text-[#6E5F54] font-bold text-xs">Factory Name</p>
+            <p className="text-[#6E5F54] font-bold text-xs">Input OTP here</p>
             <input
               name="code"
               value={form.code}
