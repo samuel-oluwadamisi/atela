@@ -80,7 +80,7 @@ const LoginScreen = () => {
 
                          {formError && <p className="text-red-500 text-xs font-bold mt-2">{formError}</p>}
 
-                        <button type='submit' disabled= { isPending} className='py-2.5 w-full bg-[#C1785A] mt-6 rounded-3xl text-white'>{ isPending ? 'Loading...': 'Access Dashboard' } </button>
+                        <button type='submit' disabled= { isPending} className='py-2.5 w-full bg-[#C1785A] font-bold mt-6 rounded-3xl text-white'>{ isPending ? 'Loading...': 'Access Dashboard' } </button>
                     </div>
 
                 </form>

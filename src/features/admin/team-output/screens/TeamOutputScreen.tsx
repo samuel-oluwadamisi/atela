@@ -5,6 +5,9 @@ import { DataTable } from "../../components/DataTable";
 import Dialogue from "@/shared/components/Dialogue";
 import { IoCloseSharp } from "react-icons/io5";
 import { UserPlus } from "lucide-react";
+import { useCreateStaff } from "../hooks/useCreateStaff";
+import { createStaffSchema } from "../schema/createStaffSchema";
+
 
 export type StaffMember = {
   name: string;
@@ -131,10 +134,47 @@ export const staffMembers: StaffMember[] = [
   },
 ];
 const TeamOutputScreen = () => {
+
+   const {mutate, isPending} = useCreateStaff()
   const filters = ["Staff Directory", "Output Reports", "Payroll CSV"];
 
   const [showDialogue, setShowDialogue] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Staff Directory");
+  const [formError, setFormError] = useState<string | null>(null)
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: "",
+    paymentType: "",
+    password: 'Praise1#'
+  });
+
+  const firstName = form.firstName.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() )
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+
+    const result = createStaffSchema.safeParse(form)
+
+    if(!result.success){
+      setFormError(result.error.issues[0].message)
+      return
+    }
+
+    mutate(result.data , {onSuccess: ()=>{
+      setShowDialogue(false)
+    }} )
+  }
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>)=>{
+    e.preventDefault()
+    setForm((prev)=> (
+      {...prev, [e.target.name]: e.target.value }
+    ))
+  }
+
+ 
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -160,7 +200,7 @@ const TeamOutputScreen = () => {
           className="bg-[#2A1F1A] ml-auto flex items-center justify-center gap-1 w-30 h-10 text-white font-bold text-xs rounded-xl text-center"
         >
           {" "}
-          <span className=" text-base text-center">+</span>Add Member{" "}
+          <span className=" text-base text-center">+</span>Create Staff{" "}
         </button>
       </div>
 
@@ -195,14 +235,31 @@ const TeamOutputScreen = () => {
             Invite a new team member to the factory floor.
           </p>
 
-          <form className="flex flex-col gap-4 w-full">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
             <div className="flex flex-col gap-1 mt-3">
               <label className="text-xs font-bold text-[#6E5F54]">
-                Full Name
+                First Name
               </label>
               <input
+              name="firstName"
+              value={form.firstName}
+              onChange={handleChange}
                 type="text"
-                placeholder="e.g. John Doe"
+                placeholder="e.g. John"
+                className="border border-[#E8E1D9] bg-[#F7F4F0] rounded-xl px-3 py-2 text-sm text-[#2A1F1A] font-bold placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold outline-none focus:border-[#2A1F1A] transition-colors"
+              />
+            </div>
+
+             <div className="flex flex-col gap-1 mt-3">
+              <label className="text-xs font-bold text-[#6E5F54]">
+                Last Name
+              </label>
+              <input
+              name="lastName"
+              value={form.lastName}
+              onChange={handleChange}
+                type="text"
+                placeholder="e.g. Doe"
                 className="border border-[#E8E1D9] bg-[#F7F4F0] rounded-xl px-3 py-2 text-sm text-[#2A1F1A] font-bold placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold outline-none focus:border-[#2A1F1A] transition-colors"
               />
             </div>
@@ -212,6 +269,9 @@ const TeamOutputScreen = () => {
                 Email address
               </label>
               <input
+              name="email"
+              value={form.email}
+              onChange={handleChange}
                 type="text"
                 placeholder="johndoe@gmail.com"
                 className="border border-[#E8E1D9] bg-[#F7F4F0] rounded-xl px-3 py-2 text-sm text-[#2A1F1A] font-bold placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold outline-none focus:border-[#2A1F1A] transition-colors"
@@ -220,13 +280,17 @@ const TeamOutputScreen = () => {
 
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#6E5F54]">Role</label>
-              <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold bg-white transition-colors">
+              <select
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+               className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold bg-white transition-colors">
                 <option className="text-sm text-[#2A1F1A]" value="">
                   Select role
                 </option>
-                <option value="Pattern">Pattern Maker</option>
-                <option value="Cutting">Cutter</option>
-                <option value="Tailoring">Tailor</option>
+                <option value="PATTERN MAKER">Pattern Maker</option>
+                <option value="CUTTER">Cutter</option>
+                <option value="TAILOR">Tailor</option>
               </select>
             </div>
 
@@ -234,28 +298,34 @@ const TeamOutputScreen = () => {
               <label className="text-xs font-bold text-[#6E5F54]">
                 Payment Type
               </label>
-              <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold bg-white transition-colors">
+              <select 
+              name="paymentType"
+              value={form.paymentType}
+              onChange={handleChange}
+              className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] placeholder:text-xs placeholder:text-[#2A1F1A80] placeholder:font-bold bg-white transition-colors">
                 <option className="text-sm text-[#2A1F1A]" value="">
                   Select payment Type
                 </option>
-                <option value="Pattern">Commission</option>
-                <option value="Cutting">Salary</option>
+                <option value="Commission">Commission</option>
+                <option value="Salary">Salary</option>
               </select>
             </div>
 
+            {formError && <p className="text-red-500 text-xs font-bold mt-2">{formError}</p>}
+
             <div className="flex justify-end gap-2 mt-2 px-3">
               <button
-                type="button" // ← important: prevents form submit
+                type="button" 
                 onClick={() => setShowDialogue(false)}
                 className="flex-1 px-4 py-2 text-sm font-bold border border-[#E8E1D9] rounded-xl text-[#2A1F1A] hover:border-[#C1785A] transition-colors"
               >
                 Cancel
               </button>
               <button
-                type="button"
+                type="submit"
                 className="flex-1 px-4 py-2 text-sm font-bold text-[#6E5F54] bg-[#E8E1D9] rounded-xl hover:bg-[#C1785A] hover:text-white transition-colors"
               >
-                Send Invite
+                {isPending ? 'Creating Staff Profile': "Create Staff"}
               </button>
             </div>
           </form>
