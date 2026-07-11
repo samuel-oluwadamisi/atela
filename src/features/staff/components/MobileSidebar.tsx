@@ -18,7 +18,7 @@ type SidebarTypes = {
 }
 
 
-const Sidebar = () => {
+const MobileSidebar = () => {
     const pathname = usePathname()
     const active = (path: string) => {
        if (path === '/admin') return pathname === '/admin'
@@ -42,33 +42,29 @@ const Sidebar = () => {
 
 
   return (
-    <div className="px-4 h-full w-full bg-white border-[#E8E1D9] border">
-        <div className="border-b border-b-[#E8E1D9] w-full h-20 flex items-center ">
-            <div className="flex items-center gap-2 mb-2">
-                <div className='bg-[#2A1F1A] rounded-lg w-8 h-8 flex items-center justify-center'> 
-                <Image src={'/images/logo-white.png'} alt="Atela-logo" width={24} height={24}  /> 
-                </div>
-                <p className='text-[#2A1F1A] font-poppins font-black text-2xl'>ATELA</p>
-            </div>
-        </div>
+    <div className="px-1 h-16 w-full bg-white border-[#E8E1D9] border">
 
-        <div className="mt-3">
+        <div className="w-full h-full flex items-center justify-between px-4">
             {
                 routes.map((route, index) => {
                     const isActive = active(route.path)
                     const Icon = route.Icon
                   return(  
-                    <Link href={route.path} key={index} className={`w-[227px] h-[49px] rounded-xl flex justify-start  gap-3 mt-1 cursor-pointer pt-3.5 px-4 transition-all delay-75 duration-500  ${isActive ? 'bg-[#C1785A]' : ''}`}>
-                       <div> <Icon className= {`{ ${isActive ? 'text-white' : 'text-black'} w-6 h-6 text-center`} /> </div>
-                        <p className={`{ ${isActive ? 'text-white' : 'text-[#2A1F1A]' } text-sm font-bold`}>{route.name}</p>
-                    </Link>
+                    <div key={index} >
+                        <Link href={route.path} className={`w-10 h-10 rounded-full flex items-center justify-center  gap-3 mt-1 cursor-pointer p-3 transition-all delay-75 duration-500  ${isActive ? 'bg-[#C1785A]' : ''}`}>
+                        <div> <Icon className= {`{ ${isActive ? 'text-white' : 'text-black'} w-6 h-6 text-center`} /> </div>
+                        </Link>
+                        <p className={`{ ${isActive ? 'text-[#2A1F1A]' : 'text-black' } text-xs font-bold`}>{route.name}</p>
+                    </div>
                   )
             })
             }
-
-            <div onClick={()=> handleLogout()}  className='w-[227px] h-[49px] rounded-xl flex justify-start  gap-3 mt-1 cursor-pointer pt-3.5 px-4'>
+            <div>
+            <div onClick={()=> handleLogout()}  className='w-10 h-10 rounded-full flex items-center justify-center  gap-3 mt-1 cursor-pointer p-3'>
                 <div> <LuLogOut className= 'text-black w-6 h-6 text-center' /> </div>
-                <p className='text-[#2A1F1A] text-sm font-bold'>Logout</p>
+                
+            </div>
+            <p className='text-[#2A1F1A] text-xs font-bold'>Logout</p>
             </div>
 
         </div>
@@ -79,4 +75,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default MobileSidebar

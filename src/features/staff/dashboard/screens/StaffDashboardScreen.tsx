@@ -1,21 +1,28 @@
+'use client'
 import InfoCard from "../components/InfoCard"
 import NewOrderTab from "../components/NewOrderTab"
+import OrderInProgress from "../components/OrderInProgress"
+import { useGetUser } from '@/features/user/hooks/useUser'
 
 
     const data = [
-        {name: 'ACTIVE ORDERS', num: 3, icon: '/images/atela-logo.png', extra: 'Action Required'},
-        {name: 'PENDING TASKS ', num: 12, icon: '/images/atela-logo.png', extra: 'Action Required'},
-        {name: 'LOW STOCK ITEMS', num: 1, icon: '/images/atela-logo.png', extra: 'Action Required'},
+        {name: 'Active Orders', num: 3},
+        {name: 'Pending Tasks ', num: 12},
+        {name: 'Earnings', num: 120000},
     ]
 const StaffDashboardScreen = () => {
+        const {data: user, isPending} = useGetUser()
+        const name = user?.tenant.tenantName.split(' ')[0]
   return (
     <main>
-        <NewOrderTab />
-        <div className='flex items-center gap-3 mb-6'>
+        <p className='text-[#6E5F54] text-sm md:text-sm font-black mb-1'> Welcome: <span className="text-xl md:text-2xl">{isPending? '...' : name} </span> </p>
+        <div className='flex items-center gap-1 md:gap-3 mb-3 w-full md:w-[90%]'>
             {data.map((info, index)=> (
                 <InfoCard key={index} info={info} />
             ))}
         </div>
+         <NewOrderTab />
+         <OrderInProgress />
     </main>
   )
 }
