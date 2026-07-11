@@ -5,7 +5,7 @@ import { Check } from 'lucide-react'
 const OrderInProgress = () => {
       const [isAccepted, setIsAccepted ] = useState(false)
   return (
-<section className={`${isAccepted ? 'shadow-md' : 'border-[#C1785A] border'} transition-all duration-100 ease-in  text-[#2A1F1A] text-sm font-bold mt-3 md:mt-7 w-ful md:w-[90%] md:px-3 h-47 md:h-37`}>
+<section className={`${isAccepted ? 'shadow-md' : 'border-[#C1785A] border'} transition-all duration-75 ease-in  text-[#2A1F1A] text-sm font-bold mt-3 md:mt-7 w-ful md:w-[90%] md:px-3 h-47 md:h-37`}>
     <div className=" pt-3 pl-3 mb-3">
         <div className=" flex flex-col md:flex-row md:items-center md:justify-between mb-1">
             <div>
@@ -22,7 +22,7 @@ const OrderInProgress = () => {
     </div>
 
    <div className="flex items-center justify-center">
-     <button onClick={()=> setIsAccepted(!isAccepted)} className={`${isAccepted ? 'bg-[#C1785A]': 'bg-green-600'} transition-all duration-100 ease-in w-[90%] md:w-[70%] h-10 text-white flex items-center justify-center gap-2 text-lg rounded-md cursor-pointer font-bold`}>
+     <button onClick={()=> setIsAccepted(!isAccepted)} className={`${isAccepted ? 'bg-[#C1785A]': 'bg-green-600'} transition-all duration-75 ease-in w-[90%] md:w-[70%] h-10 text-white flex items-center justify-center gap-2 text-lg rounded-md cursor-pointer font-bold`}>
         {isAccepted ? '' : <Check size={20} />} {isAccepted ? 'Done': 'Mark as done'}
     </button>
     </div>

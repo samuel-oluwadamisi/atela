@@ -21,7 +21,7 @@ type SidebarTypes = {
 const Sidebar = () => {
     const pathname = usePathname()
     const active = (path: string) => {
-       if (path === '/admin') return pathname === '/admin'
+       if (path === '/staff') return pathname === '/staff'
     return pathname.startsWith(path)
   }
 
