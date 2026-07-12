@@ -10,7 +10,7 @@ export default function  StaffLayout({ children }: { children: React.ReactNode }
         </div>
         <div className='w-full md:w-4/5 h-full bg-[#F7F4F0] overflow-y-auto'>
             <Navbar />
-            <div className='px-3 pt-2 pb-20 md:p-5 md:pb-5'>
+            <div className='px-1.5 md:px-3 pt-2 pb-20 md:p-5 md:pb-5'>
              {children}
             </div>
             

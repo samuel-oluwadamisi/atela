@@ -16,7 +16,7 @@ const StaffDashboardScreen = () => {
   return (
     <main>
         <p className='text-[#6E5F54] text-xl md:text-2xl font-black mb-1'> Good Morning, <span className="text-xl md:text-2xl">{isPending? '...' : name} </span></p>
-        <div className='flex items-center gap-1 md:gap-3 mb-3 w-full md:w-[90%]'>
+        <div className='flex items-center gap-1 md:gap-3 mb-4 w-full md:w-[90%]'>
             {data.map((info, index)=> (
                 <InfoCard key={index} info={info} />
             ))}
