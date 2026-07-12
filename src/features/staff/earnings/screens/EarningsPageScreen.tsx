@@ -4,8 +4,8 @@ import RecentCommissionsTab from '../components/RecentCommissionsTab'
 
 
     const data = [
-        {name: 'Total This Week', num: 54500, money: true},
-        {name: 'Total This Month', num: 120000, money: true},
+        {name: 'This Week', num: 54500, money: true},
+        {name: 'This Month', num: 120000, money: true},
         {name: 'Pending Payout', num: 3500, money: true},
     ]
 
@@ -25,12 +25,14 @@ const EarningsPageScreen = () => {
             ))}
         </div>
 
-        <p className='text-sm font-medium mt-3'>Recent Commissions</p>
+        <p className='text-sm font-medium mt-5'>Recent Commissions</p>
+       <div className='mt-3'> 
         {
             recentCommissions.map((data, index)=> (
                  <RecentCommissionsTab key={index} data= {data} />
             ))
         }
+        </div>
        
     </>
   )
