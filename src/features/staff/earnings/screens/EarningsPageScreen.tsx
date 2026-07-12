@@ -4,9 +4,9 @@ import RecentCommissionsTab from '../components/RecentCommissionsTab'
 
 
     const data = [
-        {name: 'This Week', num: 54500, money: true},
-        {name: 'This Month', num: 120000, money: true},
-        {name: 'Pending Payout', num: 3500, money: true},
+        {name: 'Week', num: 54500, money: true},
+        {name: 'Month', num: 120000, money: true},
+        {name: 'Pending', num: 3500, money: true},
     ]
 
     const recentCommissions = [
