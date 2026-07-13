@@ -57,33 +57,33 @@ const SignupScreen = () => {
     <>
       <form onSubmit={handleSubmit}>
         <h2 className="font-black text-2xl text-center">Create Workspace</h2>
-        <p className="text-[#6E5F54] font-medium text-sm text-center my-1">
+        <p className="text-[#6E5F54] font-medium text-base md:text-sm text-center mb-0 md:my-1">
           Set up your factory account
         </p>
 
-        <div className="bg-white w-90 md:w-105 p-5 rounded-[40px] mt-3">
-          <p className="text-[#6E5F54] font-bold text-xs">Factory Name</p>
+        <div className="bg-white w-90 md:w-105 p-5 rounded-[40px] mt-1 md:mt-3">
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs">Factory Name</p>
           <input
           name="factoryName"
             value={form.factoryName}
             onChange={handleChange}
             type="text"
             placeholder="e.g,, Karen Ubani"
-            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
 
-          <p className="text-[#6E5F54] font-bold text-xs mt-3">Admin Email</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Admin Email</p>
           <input
           name="email"
             value={form.email}
             onChange={handleChange}
             type="text"
             placeholder="admin@fashionhouse.com"
-            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
           
 
-          <p className="text-[#6E5F54] font-bold text-xs mt-3">Password/ Pin</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Password/ Pin</p>
           <div className="relative">
           <input
           name="password"
@@ -91,23 +91,23 @@ const SignupScreen = () => {
             onChange={handleChange}
             type={showPassword ? 'text' : "password"}
             placeholder="••••••••"
-            className=" border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className=" border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
           {showPassword ? (
-    <BsEye
-      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
-      onClick={() => setShowPassword(!showPassword)}
-    />
-  ) : (
-    <BsEyeSlash
-      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
-      onClick={() => setShowPassword(!showPassword)}
-    />
-  )}
+          <BsEye
+            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+            onClick={() => setShowPassword(!showPassword)}
+          />
+        ) : (
+          <BsEyeSlash
+            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+            onClick={() => setShowPassword(!showPassword)}
+          />
+        )}
         </div>
 
 
-        <p className="text-[#6E5F54] font-bold text-xs mt-3">Confirm Password</p>
+        <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Confirm Password</p>
         <div className="relative">
           <input
           name="confirmPassword"
@@ -115,22 +115,22 @@ const SignupScreen = () => {
             onChange={handleChange}
             type={showConfirmPassword ? 'text' : "password"}
             placeholder="••••••••"
-            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
             {showConfirmPassword ? (
-    <BsEye
-      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
-      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-    />
-  ) : (
-    <BsEyeSlash
-      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
-      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-    />
-  )}
+            <BsEye
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            />
+          ) : (
+            <BsEyeSlash
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-[#6E5F54]"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            />
+          )}
           </div>
 
-          <p className="text-[#6E5F54] font-bold text-xs mt-3">Team Size</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Team Size</p>
           <input
           name="teamSize"
             value={form.teamSize}
@@ -140,20 +140,20 @@ const SignupScreen = () => {
           }))}
             type="text"
             placeholder="1-10"
-            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-2.5 w-full mt-2 text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-xs placeholder:font-bold focus:outline-none"
+            className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
 
-          {formError && <p className="text-red-500 text-xs font-bold mt-2">{formError}</p>}
+          {formError && <p className="text-red-500 text-base md:text-xs font-bold mt-2">{formError}</p>}
 
           <button
             type="submit"
-            className={`py-2.5 w-full ${isValid ? 'opacity-100' : 'opacity-70'} bg-[#C1785A] mt-5 text-sm rounded-3xl text-white font-bold`}
+            className={`py-4 md:py-2.5 w-full ${isValid ? 'opacity-100' : 'opacity-70'} bg-[#C1785A] mt-3 md:mt-5 text-base md:text-sm rounded-3xl text-white font-bold`}
           >
             {isPending ? 'Signing you up ' : 'Create Workspace'}
           </button>
         </div>
 
-        <p className="text-[#6E5F54] text-sm text-center mt-4">
+        <p className="text-[#6E5F54] text-base md:text-sm text-center mt-1 md:mt-4">
           Already have a workspace?{" "}
           <span
             onClick={() => router.push("/login")}
