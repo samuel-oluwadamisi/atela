@@ -6,7 +6,7 @@ import { LuBell } from 'react-icons/lu'
 const NewOrderTab = () => {
   const [isAccepted, setIsAccepted ] = useState(false)
   return (
-        <main className={`bg-white flex flex-col  md:flex-row md:items-center md:justify-between w-full md:w-lg rounded-lg shadow-sm px-3 py-2 md:py-5 transition-all duration-100 ease-in ${isAccepted && 'border-2 border-[#C1785A]'} `}>
+        <main className={`bg-white flex flex-col  md:flex-row md:items-center justify-center md:justify-between w-full h-35 md:h-25 md:w-lg rounded-lg shadow-sm p-2 md:p-3 transition-all duration-100 ease-in ${isAccepted && 'border-2 border-[#C1785A]'} `}>
         <div className='flex items-center md:justify-center gap-3 mb-1'>
             <LuBell size={20} color='#C1785A'/>
             <div>

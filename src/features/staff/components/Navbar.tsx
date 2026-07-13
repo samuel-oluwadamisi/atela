@@ -21,9 +21,9 @@ const Navbar = () => {
     const initials = name?.split(' ').map((word)=> word[0])
 
   return (
-    <nav className='flex items-center justify-between h-20 bg-white px-2 md:px-5 w-full border-b border-b-[#E8E1D9]'>
+    <nav className='flex items-center justify-between h-20 bg-none md:bg-white px-2 md:px-5 w-full border-b border-b-[#E8E1D9]'>
         <div className='flex items-center justify-center gap-3'>
-        <p className='text-[#2A1F1A] text-xl font-black'>{getPageTitle()}</p>
+        <p className='text-[#2A1F1A] text-2xl md:text-xl font-black'>{getPageTitle()}</p>
         </div>
         {/* <p className='text-[#6E5F54] text-sm font-black'>{isPending? '...' : name} </p> */}
 
