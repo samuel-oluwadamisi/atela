@@ -72,7 +72,7 @@ const SignupScreen = () => {
             className="border border-[#E8E1D999] rounded-xl bg-[#F7F4F0] px-3 py-4 md:py-2.5 w-full mt-2 text-base md:text-xs font-bold text-black placeholder:text-[rgba(42, 31, 26, 0.5)] placeholder:text-base md:placeholder:text-xs placeholder:font-bold focus:outline-none"
           />
 
-          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Admin Email</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-2 md:mt-3">Admin Email</p>
           <input
           name="email"
             value={form.email}
@@ -83,7 +83,7 @@ const SignupScreen = () => {
           />
           
 
-          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Password/ Pin</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-2 md:mt-3">Password/ Pin</p>
           <div className="relative">
           <input
           name="password"
@@ -107,7 +107,7 @@ const SignupScreen = () => {
         </div>
 
 
-        <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Confirm Password</p>
+        <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-2 md:mt-3">Confirm Password</p>
         <div className="relative">
           <input
           name="confirmPassword"
@@ -130,7 +130,7 @@ const SignupScreen = () => {
           )}
           </div>
 
-          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-3">Team Size</p>
+          <p className="text-[#6E5F54] font-bold text-lg md:text-xs mt-2 md:mt-3">Team Size</p>
           <input
           name="teamSize"
             value={form.teamSize}

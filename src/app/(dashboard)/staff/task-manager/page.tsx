@@ -1,8 +1,11 @@
+import TaskManagerPageScreen from '@/features/staff/task-manager/screens/TaskManagerPageScreen'
 import React from 'react'
 
 const TaskManagerPage = () => {
   return (
-    <div>TaskManagerPage</div>
+    <>
+      <TaskManagerPageScreen />
+    </>
   )
 }
 

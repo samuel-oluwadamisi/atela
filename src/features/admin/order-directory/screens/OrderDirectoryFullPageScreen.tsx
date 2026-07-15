@@ -79,6 +79,33 @@ const OrderDirectoryFullPageScreen = ({order}: {order:OrderTableTypes} ) => {
     </div>
   </div>
 
+    {/* Divider */}
+  <hr className="border-t border-[#C1785A] my-2" />
+
+  {/* Section 3: Staff Assignment */}
+  <h2 className="text-lg font-black text-[#2A1F1A]">Assign Staff</h2>
+
+  <div className="flex flex-col gap-1">
+    <label className="text-xs font-bold text-[#6E5F54]">Assign Pattern Maker</label>
+    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
+      <option value="">Select staff</option>
+    </select>
+  </div>
+
+  <div className="flex flex-col gap-1">
+    <label className="text-xs font-bold text-[#6E5F54]">Assign Cutter</label>
+    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
+      <option value="">Select staff</option>
+    </select>
+  </div>
+
+  <div className="flex flex-col gap-1">
+    <label className="text-xs font-bold text-[#6E5F54]">Assign Tailor</label>
+    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
+      <option value="">Select staff</option>
+    </select>
+  </div>
+
   {/* Divider */}
   <hr className="border-t border-[#C1785A] my-2" />
 
@@ -121,32 +148,7 @@ const OrderDirectoryFullPageScreen = ({order}: {order:OrderTableTypes} ) => {
     <label className="text-xs font-bold text-[#6E5F54]">Payment Complete?</label>
   </div>
 
-  {/* Divider */}
-  <hr className="border-t border-[#C1785A] my-2" />
 
-  {/* Section 3: Staff Assignment */}
-  <h2 className="text-lg font-black text-[#2A1F1A]">Assign Staff</h2>
-
-  <div className="flex flex-col gap-1">
-    <label className="text-xs font-bold text-[#6E5F54]">Assign Pattern Maker</label>
-    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
-      <option value="">Select staff</option>
-    </select>
-  </div>
-
-  <div className="flex flex-col gap-1">
-    <label className="text-xs font-bold text-[#6E5F54]">Assign Cutter</label>
-    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
-      <option value="">Select staff</option>
-    </select>
-  </div>
-
-  <div className="flex flex-col gap-1">
-    <label className="text-xs font-bold text-[#6E5F54]">Assign Tailor</label>
-    <select className="border border-[#E8E1D9] rounded-lg px-3 py-2 text-sm text-[#2A1F1A] outline-none focus:border-[#2A1F1A] bg-white transition-colors">
-      <option value="">Select staff</option>
-    </select>
-  </div>
 
   {/* Actions */}
   <div className="flex justify-end gap-2 mt-4">
