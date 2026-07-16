@@ -84,8 +84,6 @@ const LoginScreen = () => {
                     </div>
 
                 </form>
-
-                <p className='text-[#6E5F54] text-lg md:text-sm text-center mt-4'>Don&apos;t have an account? <span onClick={()=> router.push('/signup')} className='text-[#C1785A] cursor-pointer font-bold'>Create One</span></p>
             </div>
             
         </div>
