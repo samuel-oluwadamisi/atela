@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 type DialogueType = {
     children: React.ReactNode
 }
 const Dialogue = ({ children }: DialogueType) => {
+    const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
   return createPortal(
     <div
       className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center"
