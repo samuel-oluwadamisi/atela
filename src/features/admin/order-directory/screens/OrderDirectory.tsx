@@ -91,7 +91,7 @@ export const columns: ColumnDef<OrderTableTypes>[] = [
 
 
 const OrderDirectoryScreen = () => {
-  const [showDialogue, setShowDialogue] = useState(true);
+  const [showDialogue, setShowDialogue] = useState(false);
   const [modal, setModal ] = useState('start')
 
   function moveBack(){
