@@ -115,7 +115,7 @@ const OrderDirectoryScreen = () => {
         }}
         button={{
           show: true,
-          label: "New Order",
+          label: "New Order(Bespoke/RTW)",
           func: () => setShowDialogue(true),
         }}
       />
