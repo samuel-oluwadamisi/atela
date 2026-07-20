@@ -20,7 +20,30 @@ type CreateStaffResponse = ApiEnvelope<{
     createAt: string;
 }>
 
+type Staff = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: string;
+    isActive: boolean;
+    createdAt: string;
+}
+
+type GetStaffResponse =ApiEnvelope<Staff[]>
+type GetStaffByIdResponse = ApiEnvelope<Staff>
+
 export async function createStaff(payload: CreateStaffPayload){
     const {data} = await API.post<CreateStaffResponse>('/staff', payload)
     return data
+}
+
+export async function getStaff(){
+    const { data } = await API.get<GetStaffResponse>('/staff')
+    return data
+}
+
+export async function getStaffById(id:string){
+    const { data } = await API.get<GetStaffByIdResponse>(`staff/${id}`)
+    return data 
 }

@@ -43,7 +43,7 @@ const LoginScreen = () => {
   return (
     <div className='flex h-screen'>
         <div className='hidden md:block relative h-screen w-2/5 overflow-hidden'>
-            <Image src={'/images/loginImage.jpg'} alt="Login-image" fill className='object-top'/>
+            <Image src={'/images/factory-image-2.jpeg'} alt="Login-image" fill className='object-cover'/>
               <div className="absolute inset-0 bg-linear-to-t from-[#994C00] to-transparent" />
 
             <div className='absolute bottom-14 left-20 z-10'>
@@ -64,7 +64,7 @@ const LoginScreen = () => {
 
                <form onSubmit={handleSubmit}>
                     <div className='bg-white w-90 md:w-105 px-5 py-8 rounded-[40px] mt-5'>
-                        <p className='text-[#6E5F54] font-bold text-lg md:text-xs'>Admin Email</p>
+                        <p className='text-[#6E5F54] font-bold text-lg md:text-xs'> Email</p>
                         <input
                         name='email'
                         value={form.email}

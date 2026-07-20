@@ -5,7 +5,7 @@ import { DataTable } from "../../components/DataTable";
 import Dialogue from "@/shared/components/Dialogue";
 import { IoCloseSharp } from "react-icons/io5";
 import { UserPlus } from "lucide-react";
-import { useCreateStaff } from "../hooks/useCreateStaff";
+import { useCreateStaff } from "../hooks/useStaff";
 import { createStaffSchema } from "../schema/createStaffSchema";
 
 
@@ -203,7 +203,7 @@ const TeamOutputScreen = () => {
           <span className=" text-base text-center">+</span>Create Staff{" "}
         </button>
       </div>
-
+          {/* Tables and Data Dashboards */}
       <div className="mt-4">
         {activeFilter === "Staff Directory" ? (
           <DataTable columns={columns} data={staffMembers} />
