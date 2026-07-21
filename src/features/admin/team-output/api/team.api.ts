@@ -20,7 +20,7 @@ type CreateStaffResponse = ApiEnvelope<{
     createAt: string;
 }>
 
-type Staff = {
+export type Staff = {
     id: string;
     firstName: string;
     lastName: string;

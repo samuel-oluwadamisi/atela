@@ -58,7 +58,7 @@ export const columns: ColumnDef<OrderTableTypes>[] = [
       const value = getValue<number>(); // expects a number 0–100
 
       return (
-        <div className="flex items-center gap-2 min-w-[120px]">
+        <div className="flex items-center gap-2 min-w-30">
           <span className="text-xs text-[#6E5F54] w-8 text-right">
             {value}%
           </span>

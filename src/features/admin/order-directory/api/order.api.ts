@@ -43,11 +43,11 @@ export type CreateOrderPayload = {
     garmentType: string;
     quantity: number;
     deadline: string;
-    measurements: MeasurementsType;
+    measurement: MeasurementsType;
 }
 
 
 export async function createOrder(payload: CreateOrderPayload){
-    const { data } = await API.post('/order/custom')
+    const { data } = await API.post('/order/custom', payload)
     return data
 }

@@ -13,3 +13,8 @@ export type OrderTableTypes = {
   progress: number;
   staff: string;
 }
+
+type Canvas = {
+  getStaff: ()=> void,
+  getStaffByID: (id:string)=> string
+}

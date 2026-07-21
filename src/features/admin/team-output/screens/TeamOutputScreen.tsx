@@ -5,7 +5,7 @@ import { DataTable } from "../../components/DataTable";
 import Dialogue from "@/shared/components/Dialogue";
 import { IoCloseSharp } from "react-icons/io5";
 import { UserPlus } from "lucide-react";
-import { useCreateStaff } from "../hooks/useStaff";
+import { useCreateStaff, useGetStaff } from "../hooks/useStaff";
 import { createStaffSchema } from "../schema/createStaffSchema";
 
 
@@ -16,7 +16,6 @@ export type StaffMember = {
   payType: "Salary" | "Commission";
   activeTasks: number;
   outputToday: number;
-  efficiency: number;
 };
 
 export const columns: ColumnDef<StaffMember>[] = [
@@ -75,24 +74,6 @@ export const columns: ColumnDef<StaffMember>[] = [
       );
     },
   },
-  {
-    accessorKey: "efficiency",
-    header: "Efficiency",
-    cell: ({ getValue }) => {
-      const efficiency = getValue<number>();
-
-      const getEfficiencyColor = (efficiency: number) => {
-        if (efficiency <= 50) return "text-red-500";
-        if (efficiency <= 70) return "text-orange-500";
-        return "text-green-500";
-      };
-      const colorClass = getEfficiencyColor(efficiency) ?? "text-[#374151]";
-
-      return (
-        <p className={` text-xs font-semibold ${colorClass} `}>{efficiency}%</p>
-      );
-    },
-  },
 ];
 
 export const staffMembers: StaffMember[] = [
@@ -103,7 +84,6 @@ export const staffMembers: StaffMember[] = [
     payType: "Salary",
     activeTasks: 2,
     outputToday: 1,
-    efficiency: 98,
   },
   {
     name: "Marcus Torres",
@@ -112,7 +92,6 @@ export const staffMembers: StaffMember[] = [
     payType: "Salary",
     activeTasks: 1,
     outputToday: 4,
-    efficiency: 94,
   },
   {
     name: "Elena Rostova",
@@ -121,7 +100,6 @@ export const staffMembers: StaffMember[] = [
     payType: "Commission",
     activeTasks: 1,
     outputToday: 2,
-    efficiency: 99,
   },
   {
     name: "David Chen",
@@ -130,12 +108,12 @@ export const staffMembers: StaffMember[] = [
     payType: "Commission",
     activeTasks: 0,
     outputToday: 3,
-    efficiency: 91,
   },
 ];
 const TeamOutputScreen = () => {
 
-   const {mutate, isPending} = useCreateStaff()
+   const {mutate, isPending:isLoadingCreate} = useCreateStaff()
+   const { data: staffData, isPending: isLoadingStaff } = useGetStaff()
   const filters = ["Staff Directory", "Output Reports", "Payroll CSV"];
 
   const [showDialogue, setShowDialogue] = useState(false);
@@ -325,7 +303,7 @@ const TeamOutputScreen = () => {
                 type="submit"
                 className="flex-1 px-4 py-2 text-sm font-bold text-[#6E5F54] bg-[#E8E1D9] rounded-xl hover:bg-[#C1785A] hover:text-white transition-colors"
               >
-                {isPending ? 'Creating Staff Profile': "Create Staff"}
+                {isLoadingCreate ? 'Creating Staff Profile': "Create Staff"}
               </button>
             </div>
           </form>
