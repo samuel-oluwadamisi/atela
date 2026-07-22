@@ -5,7 +5,7 @@ export default function SignupLayout({ children}: { children: React.ReactNode })
         <div className='flex h-screen'>
             <div className='hidden md:block relative h-screen w-2/5 overflow-hidden'>
                   <Image src={'/images/loginImage.jpg'} alt="Login-image" fill className='object-top'/>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#994C00] to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#994C00] to-transparent" />
       
                   <div className='absolute bottom-14 left-20 z-10'>
                       <div  className="flex items-center gap-2 mb-2">
@@ -14,7 +14,7 @@ export default function SignupLayout({ children}: { children: React.ReactNode })
                           </div>
                           <p className='text-white font-poppins font-black text-2xl'>ATELA</p>
                       </div>
-                      <p className='text-white font-bold text-xl max-w-[380px]'>The Single Source of Truth for your factory floor</p>
+                      <p className='text-white font-bold text-xl max-w-95'>The Single Source of Truth for your factory floor</p>
                   </div>
             </div>
 
