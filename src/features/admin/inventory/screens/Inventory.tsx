@@ -37,7 +37,7 @@ export const columns: ColumnDef<InventoryTypes>[] = [
       const stage = getValue<string>();
 
       const colors: Record<string, ColorTypes> = {
-        Healthy: {
+        Sufficient: {
           bg: "bg-[#4A7C591A]",
           text: "text-[#4A7C59]",
           dot: "bg-[#4A7C59]",
@@ -69,7 +69,7 @@ const data: InventoryTypes[] = [
     color: "Ivory",
     stock: 105,
     unit: "Meters",
-    status: "Healthy",
+    status: "Sufficient",
   },
   {
     name: "Linen",
@@ -83,14 +83,14 @@ const data: InventoryTypes[] = [
     color: "Black",
     stock: 50,
     unit: "Spools",
-    status: "Healthy",
+    status: "Sufficient",
   },
   {
     name: "Interfacing",
     color: "Medium",
     stock: 85,
     unit: "Meters",
-    status: "Healthy",
+    status: "Sufficient",
   },
 ];
 
