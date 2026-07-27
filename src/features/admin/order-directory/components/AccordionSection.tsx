@@ -38,7 +38,7 @@ const AccordionSection = ({ section,register, isOpen, onToggle}: { section: Sect
                 </label>
                 <input type="number"
                 step="0.1"
-                {...register(field.key, { valueAsNumber: true })} className={inputClasses} />
+                {...register(field.key,  { setValueAs: (v) => (v === "" ? undefined : Number(v)) })} className={inputClasses} />
               </div>
             ))}
           </div>

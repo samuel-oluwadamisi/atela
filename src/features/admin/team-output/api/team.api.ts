@@ -26,8 +26,7 @@ export type Staff = {
     lastName: string;
     email: string;
     role: string;
-    isActive: boolean;
-    createdAt: string;
+    paymentType: string;
 }
 
 type GetStaffResponse =ApiEnvelope<Staff[]>

@@ -1,0 +1,36 @@
+import { z } from "zod";
+
+export const measurementsSchema = z.object({
+  bust: z.number().optional(),
+  underBust: z.number().optional(),
+  acrossChest: z.number().optional(),
+  acrossBack: z.number().optional(),
+  shoulderWidth: z.number().optional(),
+  neckCircumference: z.number().optional(),
+  bustPointToBustPoint: z.number().optional(),
+  shoulderToBustPoint: z.number().optional(),
+  shoulderToWaist: z.number().optional(),
+  frontWaistLength: z.number().optional(),
+  backWaistLength: z.number().optional(),
+  waist: z.number().optional(),
+  highHip: z.number().optional(),
+  fullHip: z.number().optional(),
+  waistToHip: z.number().optional(),
+  armhole: z.number().optional(),
+  bicepCircumference: z.number().optional(),
+  sleeveLength: z.number().optional(),
+  elbowCircumference: z.number().optional(),
+  wristCircumference: z.number().optional(),
+  thighCircumference: z.number().optional(),
+  kneeCircumference: z.number().optional(),
+  calfCircumference: z.number().optional(),
+  ankleCircumference: z.number().optional(),
+  crotch: z.number().optional(),
+  trouserInseam: z.number().optional(),
+  trouserOutseam: z.number().optional(),
+  waistToKnee: z.number().optional(),
+  fullDressLength: z.number().optional(),
+  waistToFloor: z.number().optional(),
+});
+
+export type MeasurementsType = z.infer<typeof measurementsSchema>;

@@ -4,6 +4,8 @@ import { useState } from "react";
 import AccordionSection from "./AccordionSection";
 import { CreateOrderPayload, MeasurementsType } from "../api/order.api";
 import { useStartOrder } from "../context/CreateOrderContext";
+import { measurementsSchema } from "../schema/MeasurementsSchema";
+import { useCreateOrder } from "../hooks/useOrder";
 
 
 type FieldConfig = {
@@ -34,14 +36,14 @@ const SECTIONS: Section[] = [
     id: "torso",
     title: "Torso",
     fields: [
-      { key: 'bustToBustPoint' , label: "Bust Point to Bust Point"},
+      { key: 'bustPointToBustPoint' , label: "Bust Point to Bust Point"},
       { key: 'shoulderToBustPoint' , label: "Shoulder to Bust Point"},
       { key: 'shoulderToWaist' , label: "Shoulder to Waist"},
       { key: 'frontWaistLength' , label: "Front Waist Length"},
       { key: 'backWaistLength' , label: "Back Waist Length"},
       { key: 'waist' , label: "Waist"},
-      { key: 'highWaist' , label: "High Waist"},
-      { key: 'fullWaist' , label: "Full Waist"},
+      { key: 'highHip' , label: "High Hip"},
+      { key: 'fullHip' , label: "Full Hip"},
       { key: 'waistToHip' , label: "Waist to Hip"},
     ],
   },
@@ -53,7 +55,7 @@ const SECTIONS: Section[] = [
       { key: 'bicepCircumference' , label: "Bicep Circumference"},
       { key: 'sleeveLength' , label: "Sleeve Length"},
       { key: 'elbowCircumference' , label: "Elbow Circumference"},
-      { key: 'waistCircumference' , label: "Waist Circumference"},
+      { key: 'wristCircumference' , label: "Wrist Circumference"},
     ],
   },
   {
@@ -65,8 +67,8 @@ const SECTIONS: Section[] = [
       { key: 'calfCircumference' , label: "Calf Circumference"},
       { key: 'ankleCircumference' , label: "Ankle Circumference"},
       { key: 'crotch' , label: "Crotch"},
-      { key: 'trouserInSeam' , label: "Trouser In-seam (Crotch to Ankle)"},
-      { key: 'trouserOutSeam' , label: "Trouser Out-seam (Waist to Ankle)"},
+      { key: 'trouserInseam' , label: "Trouser In-seam (Crotch to Ankle)"},
+      { key: 'trouserOutseam' , label: "Trouser Out-seam (Waist to Ankle)"},
     ],
   },
   {
@@ -89,16 +91,26 @@ const MeasurementForm = ({closeModal, moveBack }:{ closeModal: () => void; moveB
   const [formError, setFormError ] = useState<string | null>(null)
   const { register, handleSubmit} = useForm<MeasurementsType>()
   const { data, clearData } = useStartOrder()
+  const { mutate, isPending,} = useCreateOrder()
 
   function onSubmit(form: MeasurementsType){
-    
-    const fullPayload = { ...data, ...form } as CreateOrderPayload;
-    clearData()
-  }
 
-  const handleCancel = ()=> {
-    moveBack()
-}
+        const result = measurementsSchema.safeParse(form);
+    
+        if (!result.success) {
+          setFormError(result.error.issues[0].message);
+          return;
+        }
+    
+      const fullPayload = { ...data, ...form } as CreateOrderPayload;
+      console.log(fullPayload)
+      mutate(fullPayload, {onSuccess: ()=> {
+        clearData()
+        closeModal()
+        moveBack()
+      }})
+      
+  }
 
   return (
   <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full mt-3">
@@ -112,10 +124,12 @@ const MeasurementForm = ({closeModal, moveBack }:{ closeModal: () => void; moveB
         />
       ))}
 
+      {formError && <p className="text-red-500 text-xs font-bold mt-2">{formError}</p>}
+      
     <div className="sticky bottom-0 flex justify-end gap-2 mt-2 px-3">
               <button
                 type="button" // ← important: prevents form submit
-                onClick={handleCancel}
+                onClick={moveBack}
                 className="flex-1 px-4 py-2 text-sm font-bold border border-[#E8E1D9] rounded-xl text-[#2A1F1A] hover:border-[#C1785A] transition-colors"
               >
                 Cancel
@@ -124,7 +138,7 @@ const MeasurementForm = ({closeModal, moveBack }:{ closeModal: () => void; moveB
                 type="submit"
                 className="flex-1 px-4 py-2 text-sm font-bold text-[#6E5F54] bg-[#E8E1D9] rounded-xl hover:bg-[#C1785A] hover:text-white transition-colors"
               >
-                Submit
+                {isPending ? 'Creating...' : 'Submit'}
               </button>
             </div>
     </form>
