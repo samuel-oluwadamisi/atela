@@ -8,6 +8,7 @@ import { UserPlus } from "lucide-react";
 import { useCreateStaff, useGetStaff } from "../hooks/useStaff";
 import { createStaffSchema } from "../schema/createStaffSchema";
 import { Staff } from "../api/team.api";
+import Link from "next/link";
 
 
 export type StaffMember = {
@@ -52,6 +53,18 @@ export const columns: ColumnDef<Staff>[] = [
   {
     accessorKey: "paymentType",
     header: "Pay",
+  },
+    {
+  id: "actions",
+  header: "",
+  cell: ({ row }) => (
+    <Link
+      href={`/admin/team-output/${row.original.id}`}
+      className="px-3 py-1 text-xs font-bold border border-[#E8E1D9] rounded-lg hover:border-[#C1785A]"
+    >
+      View
+    </Link>
+  ),
   },
   // {
   //   accessorKey: "activeTasks",
