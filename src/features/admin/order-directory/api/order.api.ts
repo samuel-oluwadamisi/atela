@@ -3,36 +3,36 @@ import { ApiEnvelope } from "@/shared/lib/api/apiResponseTypeEnvelope";
 
 
 export type MeasurementsType = {
-    bust: number;
-    underBust: number;
-    acrossChest: number;
-    acrossBack: number;
-    shoulderWidth: number;
-    neckCircumference: number;
-    bustToBustPoint: number;
-    shoulderToBustPoint:number;
-    shoulderToWaist: number;
-    frontWaistLength: number;
-    backWaistLength: number;
-    waist: number;
-    highWaist: number;
-    fullWaist: number;
-    waistToHip: number;
-    armhole: number;
-    bicepCircumference: number;
-    sleeveLength: number;
-    elbowCircumference: number;
-    waistCircumference: number;
-    thighCircumference: number;
-    kneeCircumference: number;
-    calfCircumference: number;
-    ankleCircumference: number;
-    crotch: number;
-    trouserInSeam: number;
-    trouserOutSeam: number;
-    waistToKnee: number;
-    fullDressLength: number;
-    waistToFloor: number;
+    bust?: number;
+    underBust?: number;
+    acrossChest?: number;
+    acrossBack?: number;
+    shoulderWidth?: number;
+    neckCircumference?: number;
+    bustToBustPoint?: number;
+    shoulderToBustPoint?: number;
+    shoulderToWaist?: number;
+    frontWaistLength?: number;
+    backWaistLength?: number;
+    waist?: number;
+    highWaist?: number;
+    fullWaist?: number;
+    waistToHip?: number;
+    armhole?: number;
+    bicepCircumference?: number;
+    sleeveLength?: number;
+    elbowCircumference?: number;
+    waistCircumference?: number;
+    thighCircumference?: number;
+    kneeCircumference?: number;
+    calfCircumference?: number;
+    ankleCircumference?: number;
+    crotch?: number;
+    trouserInSeam?: number;
+    trouserOutSeam?: number;
+    waistToKnee?: number;
+    fullDressLength?: number;
+    waistToFloor?: number;
 }
 
 export type CreateOrderPayload = {
@@ -43,6 +43,7 @@ export type CreateOrderPayload = {
     garmentType: string;
     quantity: number;
     deadline: string;
+    description: string;
     measurement: MeasurementsType;
 }
 

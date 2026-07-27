@@ -1,5 +1,6 @@
 import Navbar from '@/features/admin/components/Navbar'
 import Sidebar from '@/features/admin/components/Sidebar'
+import { CreateOrderProvider } from '@/features/admin/order-directory/context/CreateOrderContext'
 
 export default function  AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +11,7 @@ export default function  AdminLayout({ children }: { children: React.ReactNode }
         <div className='w-4/5 h-full bg-[#F7F4F0] overflow-y-auto'>
             <Navbar />
             <div className='p-5'>
-             {children}
+             <CreateOrderProvider>{children}</CreateOrderProvider>
             </div>
             
         </div>

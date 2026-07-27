@@ -94,11 +94,6 @@ const OrderDirectoryScreen = () => {
   const [showDialogue, setShowDialogue] = useState(false);
   const [modal, setModal ] = useState('start')
 
-  function moveBack(){
-    setShowDialogue(false)
-    setModal('start')
-  }
-
   return (
     <div className=" w-full h-full">
       <DataTable
@@ -135,13 +130,13 @@ const OrderDirectoryScreen = () => {
             />
           </div>
 
-          <p className="text-sm font-bold text-[#6E5F54]">
+          <p className="text-lg text-center font-bold text-[#2A1F1A]">
             {modal === 'start' ? 'Client and Order Details' : 'Client Measurements'}
           </p>
 
           {modal === 'start' ? 
           <ClientForm closeModal = {()=> setShowDialogue(false) } moveNext = {()=> setModal('end')}/> : 
-           <MeasurementForm closeModal = {()=> setShowDialogue(false) } moveBack = {moveBack} />  }
+           <MeasurementForm closeModal = {()=> setShowDialogue(false) } moveBack = {()=> setModal('start')} />  }
         </Dialogue>
       )}
     </div>
