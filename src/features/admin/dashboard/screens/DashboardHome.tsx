@@ -14,7 +14,6 @@ const DashboardHomeScreen = () => {
     ]
   return (
     <main>
-    <p>I have done somthing </p>
         <div className='flex items-center gap-3 mb-6'>
             {data.map((info, index)=> (
                 <InfoCard key={index} info={info} />
