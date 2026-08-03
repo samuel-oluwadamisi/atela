@@ -17,6 +17,10 @@ export const columns: ColumnDef<OrderTableTypes>[] = [
     header: "Code",
   },
   {
+    accessorKey: "customer",
+    header: "Customer",
+  },
+  {
     accessorKey: "dress",
     header: "Dress",
   },

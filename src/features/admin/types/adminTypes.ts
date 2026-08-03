@@ -7,6 +7,7 @@ export type ReviewTypes = {
 export type OrderTableTypes = {
   code: string;
   dress: string;
+  customer:string;
   garment: string;
   volume: number;
   currentStage: "Pattern" | "Cutting" | "Tailoring";

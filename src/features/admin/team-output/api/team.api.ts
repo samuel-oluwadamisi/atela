@@ -1,5 +1,7 @@
+import { staffMembers } from "@/mock/staff";
 import { ApiEnvelope } from "@/shared/lib/api/apiResponseTypeEnvelope";
 import { API } from "@/shared/lib/api/axios";
+import { isDemoMode } from "@/shared/lib/demo/demo";
 
 
 export type CreateStaffPayload = {
@@ -38,8 +40,11 @@ export async function createStaff(payload: CreateStaffPayload){
 }
 
 export async function getStaff(){
+    if (isDemoMode) {
+        return staffMembers
+    }
     const { data } = await API.get<GetStaffResponse>('/staff')
-    return data
+    return data.data
 }
 
 export async function getStaffById(id:string){

@@ -2,6 +2,8 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { DataTable } from "../../components/DataTable"
 import { ReviewTypes } from "../../types/adminTypes"
+import { orders } from "../../data/orders"
+import Link from "next/link"
 
 
 
@@ -22,21 +24,23 @@ import { ReviewTypes } from "../../types/adminTypes"
   {
   id: "actions",         
   header: "Actions",
-  cell: ({ row }) => {
-    const user = row.original  
+  cell: ({ row }) => { 
     return (
-      <div className="flex items-center justify-center rounded-xl gap-2 w-16 h-10 bg-white border border-[#E8E1D9]">
+      <Link href={`/admin/order-directory/${row.original.code}`} className="flex items-center justify-center rounded-xl gap-2 w-16 h-10 bg-white border border-[#E8E1D9]">
         <button className="cursor-pointer text-xs font-bold text-[#2A1F1A]">Review</button>
-      </div>
+      </Link>
     )
   }
 }
 ]
 
-const data:ReviewTypes[] =[
-  {code: 'A7B2', dress: 'Maison Claire', staff: 'Marcus Tavenier'},
-  {code: 'L2P9', dress: 'Boutique 11', staff: 'Marcus Tavenier'}
-]
+const data = orders.slice(0,2)
+// const data:ReviewTypes[] =[
+//   {code: 'A7B2', dress: 'Maison Claire', staff: 'Marcus Tavenier'},
+//   {code: 'L2P9', dress: 'Boutique 11', staff: 'Marcus Tavenier'}
+// ]
+
+
 
 
 const ActionRequired = () => {

@@ -1,15 +1,13 @@
 'use client'
+import { StaffMember } from '@/mock/staff'
 import { useGetStaffById } from '../hooks/useStaff'
 
-const GetStaffByIdScreen = ({id}: {id:string}) => {
-     const { data:staffData, isPending } = useGetStaffById(id)
-    console.log(staffData)
+const GetStaffByIdScreen = ({staffMember}: {staffMember: StaffMember}) => {
+    //  const { data:staffData, isPending } = useGetStaffById(id)
+    console.log(staffMember) 
   return (
     <>
-      {isPending ? ('Loading' ): (
-        staffData?.data.firstName + ' ' + staffData?.data.lastName 
-      )
-    }
+       <p>{staffMember.firstName} {staffMember.lastName}</p>
     </>
   )
 }

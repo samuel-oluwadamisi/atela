@@ -1,4 +1,6 @@
+import { getStaffById } from "@/features/admin/team-output/api/team.api";
 import GetStaffByIdScreen from "@/features/admin/team-output/screens/GetStaffByIdScreen";
+import { getDemoStaffById, StaffMember } from "@/mock/staff";
 
 
 
@@ -9,10 +11,13 @@ type Props = {
 };
 const StaffByIdPage = async({params}: Props) => {
     const { id } = await params
+        const staffMember = getDemoStaffById(id);
+      if (!staffMember) 
+        return <p>Staff Member Not Found</p>;
    
   return (
     <>
-    <GetStaffByIdScreen id= {id} />
+    <GetStaffByIdScreen staffMember= {staffMember} />
     </>
   )
 }

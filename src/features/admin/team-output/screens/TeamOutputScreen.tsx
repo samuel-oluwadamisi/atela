@@ -11,14 +11,7 @@ import { Staff } from "../api/team.api";
 import Link from "next/link";
 
 
-export type StaffMember = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: string;
-  paymentType: "Salary" | "Commission";
-};
+
 
 export const columns: ColumnDef<Staff>[] = [
   {
@@ -54,7 +47,31 @@ export const columns: ColumnDef<Staff>[] = [
     accessorKey: "paymentType",
     header: "Pay",
   },
-    {
+  {
+    accessorKey: "activeTasks",
+    header: "Active Task",
+    cell: ({ getValue }) => {
+      const task = getValue<number>();
+      return (
+        <div className="flex items-center justify-center">
+          <p>{task}</p>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "output",
+    header: "Output(Today)",
+    cell: ({ getValue }) => {
+      const output = getValue<number>();
+      return (
+        <div className="flex items-center justify-center">
+          <p>{output}</p>
+        </div>
+      );
+    },
+  },
+  {
   id: "actions",
   header: "",
   cell: ({ row }) => (
@@ -66,66 +83,9 @@ export const columns: ColumnDef<Staff>[] = [
     </Link>
   ),
   },
-  // {
-  //   accessorKey: "activeTasks",
-  //   header: "Active Task",
-  //   cell: ({ getValue }) => {
-  //     const task = getValue<number>();
-  //     return (
-  //       <div className="flex items-center justify-center">
-  //         <p>{task}</p>
-  //       </div>
-  //     );
-  //   },
-  // },
-  // {
-  //   accessorKey: "outputToday",
-  //   header: "Output(Today)",
-  //   cell: ({ getValue }) => {
-  //     const output = getValue<number>();
-  //     return (
-  //       <div className="flex items-center justify-center">
-  //         <p>{output}</p>
-  //       </div>
-  //     );
-  //   },
-  // },
 ];
 
-// export const staffMembers: StaffMember[] = [
-//   {
-//     id: 'asd6as',
-//     firstName: "Sarah",
-//     lastName: 'Jenkins',
-//     email: "sarah.j@fashionhouse.com",
-//     role: "Pattern Maker",
-//     paymentType: "Salary",
-//   },
-//   {
-//     id: 'asd6jsdbsas',
-//     firstName: "Sarah",
-//     lastName: 'Jenkins',
-//     email: "marcus.t@fashionhouse.com",
-//     role: "Head Cutter",
-//     paymentType: "Salary",
-//   },
-//   {
-//     id: 'assvdtyasfd67q2d6as',
-//     firstName: "Sarah",
-//     lastName: 'Jenkins',
-//     email: "elena.r@fashionhouse.com",
-//     role: "Senior Tailor",
-//     paymentType: "Commission",
-//   },
-//   {
-//     id: 'asqwe7t3q87ed6as',
-//     firstName: "Sarah",
-//     lastName: 'Jenkins',
-//     email: "david.c@fashionhouse.com",
-//     role: "Tailor",
-//     paymentType: "Commission",
-//   },
-// ];
+
 const TeamOutputScreen = () => {
 
    const {mutate, isPending:isLoadingCreate} = useCreateStaff()
@@ -201,7 +161,7 @@ const TeamOutputScreen = () => {
           {/* Tables and Data Dashboards */}
       <div className="mt-4">
         {activeFilter === "Staff Directory" ? (
-          <DataTable columns={columns} data={staffData?.data ?? []} />
+          <DataTable columns={columns} data={staffData ?? []} />
         ) : activeFilter === "Output Reports" ? (
           <p>OutPut Reports</p>
         ) : activeFilter === "Payroll CSV" ? (

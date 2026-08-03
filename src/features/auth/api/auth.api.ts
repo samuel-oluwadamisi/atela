@@ -1,5 +1,7 @@
 import { ApiEnvelope } from "@/shared/lib/api/apiResponseTypeEnvelope";
 import { API } from "@/shared/lib/api/axios";
+import { isDemoMode } from "@/shared/lib/demo/demo";
+import { demoToken } from "@/mock/auth";
 
 
 
@@ -51,6 +53,12 @@ export async function resendOtp(payload: ResendOtp){
 }
   
 export async function login(payload:LoginType){
+      if (isDemoMode) {
+        return {
+            accessToken: demoToken,
+            message: "Demo login successful",
+        };
+    }
     const {data} = await API.post<LoginResponse>('/auth/login', payload)
     return data.data
 }
