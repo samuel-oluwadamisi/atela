@@ -163,7 +163,7 @@ const TeamOutputScreen = () => {
         {activeFilter === "Staff Directory" ? (
           <DataTable columns={columns} data={staffData ?? []} />
         ) : activeFilter === "Output Reports" ? (
-          <p>OutPut Reports</p>
+          <p>OutPut Report</p>
         ) : activeFilter === "Payroll CSV" ? (
           <p>Payroll CSV</p>
         ) : (
