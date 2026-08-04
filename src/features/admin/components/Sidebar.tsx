@@ -4,7 +4,7 @@ import Link from "next/link"
 import { TbActivityHeartbeat } from "react-icons/tb";
 import { GoStack } from "react-icons/go";
 import { PiCube } from "react-icons/pi";
-import { LuUsers, LuSettings, LuLogOut } from "react-icons/lu";
+import { LuUsers, LuUser, LuSettings, LuLogOut } from "react-icons/lu";
 import Image from "next/image";
 import { IconType } from "react-icons";
 import { useAuth } from "@/shared/context/AuthContext";
@@ -37,6 +37,7 @@ const Sidebar = () => {
         { name: 'Dashboard', path: '/admin', Icon: TbActivityHeartbeat },
         { name: 'Order Directory', path: '/admin/order-directory', Icon: GoStack  },
         { name: 'Inventory', path: '/admin/inventory', Icon: PiCube  },
+        { name: 'Clients', path: '/admin/clients', Icon: LuUser  },
         { name: 'Team Output', path: '/admin/team-output', Icon: LuUsers },
         {name: 'Settings', path: '/admin/settings', Icon: LuSettings }
     ]

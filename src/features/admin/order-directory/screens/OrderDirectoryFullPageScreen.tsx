@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { OrderTableTypes } from "../../types/adminTypes";
+import Dialogue from "@/shared/components/Dialogue";
+import MeasurementForm from "../components/MeasurementForm";
 
 const OrderDirectoryFullPageScreen = ({
   order,
@@ -13,6 +15,7 @@ const OrderDirectoryFullPageScreen = ({
   });
 
   const [edit, setEdit] = useState(false);
+  const [showMeasurement, setShowMeasurement] = useState(false);
 
   return (
     <>
@@ -93,6 +96,19 @@ const OrderDirectoryFullPageScreen = ({
             </select>
           </div>
         </div>
+
+        <button 
+          className="bg-[#C1785A] text-white w-1/5 p-2 text-xs rounded-xl hover:bg-[#2A1F1A] transition-colors"
+          onClick={() => setShowMeasurement(!showMeasurement)}
+        >
+          Add Measurements
+        </button>
+
+              {showMeasurement && 
+        <Dialogue>
+         <MeasurementForm closeModal={() => setShowMeasurement(false)} moveBack={() => setShowMeasurement(false)} />
+        </Dialogue>
+}
 
         {/* Divider */}
         <hr className="border-t border-[#C1785A] my-2" />

@@ -135,7 +135,8 @@ const MeasurementForm = ({closeModal, moveBack }:{ closeModal: () => void; moveB
                 Cancel
               </button>
               <button
-                type="submit"
+              onClick={closeModal}
+                type="button"
                 className="flex-1 px-4 py-2 text-sm font-bold text-[#6E5F54] bg-[#E8E1D9] rounded-xl hover:bg-[#C1785A] hover:text-white transition-colors"
               >
                 {isPending ? 'Creating...' : 'Submit'}

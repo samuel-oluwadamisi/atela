@@ -36,7 +36,7 @@ const ClientForm = ({ closeModal, moveNext }: Props) => {
       return;
     }
     updateData(result.data);
-    moveNext();
+  
   };
 
   return (
@@ -154,8 +154,8 @@ const ClientForm = ({ closeModal, moveNext }: Props) => {
         >
           Cancel
         </button>
-        <button
-          type="submit"
+        <button onClick={moveNext}
+          type="button"
           className="flex-1 px-4 py-2 text-sm font-bold text-[#6E5F54] bg-[#E8E1D9] rounded-xl hover:bg-[#C1785A] hover:text-white transition-colors"
         >
           Next
