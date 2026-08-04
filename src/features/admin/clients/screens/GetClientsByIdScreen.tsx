@@ -1,6 +1,26 @@
-import { orderStatusColors } from "@/app/(dashboard)/admin/clients/page";
+
 import { ClientProfile, PastOrder } from "@/mock/clients";
 import { IoArrowBack, IoMail, IoCall, IoLocationOutline, IoCalendarOutline, IoPencil } from "react-icons/io5";
+
+
+type ColorTypes = {
+  bg: string;
+  text: string;
+  dot: string;
+};
+
+export const orderStatusColors: Record<string, ColorTypes> = {
+  Completed: {
+    bg: "bg-[#4A7C591A]",
+    text: "text-[#4A7C59]",
+    dot: "bg-[#4A7C59]",
+  },
+  Cancelled: {
+    bg: "bg-[#D4A3731A]",
+    text: "text-[#D4A373]",
+    dot: "bg-[#D4A373]",
+  },
+};
 
 
 function formatCurrency(value: number): string {
