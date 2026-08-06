@@ -1,11 +1,13 @@
 'use client'
-import { StaffMember } from '@/mock/staff'
+import { StaffMember, TotalTaskListType } from '@/mock/staff'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { ArrowLeft, Mail, Phone, Calendar, Wallet, ClipboardList, TrendingUp, TrendingDown, Pencil, UserX, LucideIcon, } from "lucide-react";
 import Link from 'next/link';
+import { ColumnDef } from '@tanstack/react-table';
+import { DataTable } from '../../components/DataTable';
 // import { useGetStaffById } from '../hooks/useStaff'
 
-type ActiveTask = StaffMember["activeTaskList"][number];
+
 type OutputPoint = StaffMember["recentOutputHistory"][number];
 type StaffStatus = StaffMember["status"];
 
@@ -226,88 +228,6 @@ function OutputChart({ data }: { data: OutputPoint[] }) {
   );
 }
 
-function ActiveTaskTable({ tasks }: { tasks: ActiveTask[] }) {
-  if (tasks.length === 0) {
-    return (
-      <div
-        style={{
-          padding: "28px 16px",
-          textAlign: "center",
-          color: theme.muted,
-          fontSize: 14,
-        }}
-      >
-        No active tasks assigned right now.
-      </div>
-    );
-  }
-
-  return (
-    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
-      <thead>
-        <tr>
-          {["Order", "Stage", "Due date"].map((h) => (
-            <th
-              key={h}
-              style={{
-                textAlign: "left",
-                padding: "8px 12px",
-                fontSize: 12,
-                fontWeight: 500,
-                color: theme.muted,
-                borderBottom: `1px solid ${theme.border}`,
-              }}
-            >
-              {h}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {tasks.map((t) => {
-          const stage = stageColors[t.stage] ?? { bg: theme.grayBg, text: theme.gray };
-          return (
-            <tr key={t.id}>
-              <td
-                style={{
-                  padding: "12px",
-                  borderBottom: `1px solid ${theme.border}`,
-                  fontWeight: 500,
-                  color: theme.ink,
-                }}
-              >
-                {t.orderRef}
-              </td>
-              <td style={{ padding: "12px", borderBottom: `1px solid ${theme.border}` }}>
-                <span
-                  style={{
-                    padding: "3px 10px",
-                    borderRadius: 999,
-                    fontSize: 12,
-                    fontWeight: 500,
-                    background: stage.bg,
-                    color: stage.text,
-                  }}
-                >
-                  {t.stage}
-                </span>
-              </td>
-              <td
-                style={{
-                  padding: "12px",
-                  borderBottom: `1px solid ${theme.border}`,
-                  color: theme.muted,
-                }}
-              >
-                {formatDate(t.dueDate)}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
-}
 
 function Card({
   title,
@@ -354,6 +274,56 @@ function Card({
     </div>
   );
 }
+
+export const columns: ColumnDef<TotalTaskListType>[] = [
+  {
+    accessorKey: "clientName",
+    header: "Customer",
+  },
+  {
+    accessorKey: "dress",
+    header: "Dress",
+  },
+  {
+    accessorKey: "dueDate",
+    header: "Deadline",
+    cell: ({ getValue }) => {
+      const date = getValue<string>();
+      return <p className="text-center">{formatShortDate(date)}</p>;
+    }
+  },
+  {
+    accessorKey: "commission",
+    header: "Commission",
+    cell: ({getValue}) => {
+      const value = getValue<number>();
+      return <p className="text-center">{formatCurrency(value)}</p>;
+    }
+  },
+  {
+    accessorKey: "orderStatus",
+    header: "Status",
+    cell: ({ getValue }) => {
+      const stage = getValue<string>();
+
+      const colors: Record<string, string> = {
+        Rejected: "bg-[#3A5A8C1A] text-[#3A5A8C]",
+        Active: "bg-[#D4A3731A] text-[#D4A373]",
+        Completed: "bg-[#4A7C591A] text-[#4A7C59]",
+      };
+
+      const colorClass = colors[stage] ?? "bg-[#F3F4F6] text-[#374151]";
+
+      return (
+        <div
+          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${colorClass}`}
+        >
+          {stage}
+        </div>
+      );
+    },
+  },
+];
 
 const GetStaffByIdScreen = ({ staffMember: staff }: { staffMember: StaffMember }) => {
   // const { data: staffData, isPending } = useGetStaffById(id)
@@ -476,9 +446,8 @@ const GetStaffByIdScreen = ({ staffMember: staff }: { staffMember: StaffMember }
             </div>
           </Card>
 
-          <Card title="Active tasks">
-            <ActiveTaskTable tasks={staff.activeTaskList} />
-          </Card>
+          <DataTable columns={columns} data={staff.totalTaskList} />
+
         </div>
 
         {/* right column */}

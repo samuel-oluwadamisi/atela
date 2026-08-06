@@ -13,6 +13,16 @@
 //   thisMonth: number;
 // };
 
+export type TotalTaskListType = {
+   id: string;
+    orderRef: string;
+    clientName?: string;
+    dress: string;
+    orderStatus: "Active" | "Completed" | "Rejected";
+    dueDate: string;
+    commission: number;
+}
+
 export type StaffMember = {
   id: string;
   firstName: string;
@@ -27,12 +37,7 @@ export type StaffMember = {
   output: number; // today's output
   lastMonth: number;
   thisMonth: number;
-  activeTaskList: {
-    id: string;
-    orderRef: string;
-    stage: string;
-    dueDate: string; // ISO date
-  }[];
+  totalTaskList: TotalTaskListType[];
   recentOutputHistory: {
     date: string; // ISO date
     count: number;
@@ -55,10 +60,10 @@ export const staffMembers: StaffMember[] = [
     output: 5,
     lastMonth: 200000,
     thisMonth: 130000,
-    activeTaskList: [
-      { id: "tsk_101", orderRef: "ORD-2045", stage: "Pattern Drafting", dueDate: "2026-08-06" },
-      { id: "tsk_102", orderRef: "ORD-2049", stage: "Cutting", dueDate: "2026-08-08" },
-      { id: "tsk_103", orderRef: "ORD-2051", stage: "Pattern Drafting", dueDate: "2026-08-10" },
+    totalTaskList: [
+      { id: "tsk_101", orderRef: "ORD-2045", clientName: "Adaeze Nwankwo", dress: "Ankara gown", orderStatus: "Active", dueDate: "2026-08-06", commission: 5000 },
+      { id: "tsk_102", orderRef: "ORD-2049", clientName: "Ngozi Amaka", dress: "Two-piece skirt set", orderStatus: "Completed", dueDate: "2026-08-08", commission: 4000 },
+      { id: "tsk_103", orderRef: "ORD-2051", clientName: "Mije Digban", dress: "Agbada", orderStatus: "Completed", dueDate: "2026-08-10", commission: 6000 },
     ],
     recentOutputHistory: [
       { date: "2026-07-29", count: 4 },
@@ -85,9 +90,9 @@ export const staffMembers: StaffMember[] = [
     output: 4,
     lastMonth: 150000,
     thisMonth: 120000,
-    activeTaskList: [
-      { id: "tsk_204", orderRef: "ORD-2047", stage: "Cutting", dueDate: "2026-08-05" },
-      { id: "tsk_205", orderRef: "ORD-2052", stage: "Cutting", dueDate: "2026-08-09" },
+    totalTaskList: [
+      { id: "tsk_204", orderRef: "ORD-2047", clientName: "Ngozi Amaka", dress: "Ankara gown", orderStatus: "Active", dueDate: "2026-08-05", commission: 5000 },
+      { id: "tsk_205", orderRef: "ORD-2052", clientName: "Mije Digban", dress: "Agbada", orderStatus: "Completed", dueDate: "2026-08-09", commission: 6000 },
     ],
     recentOutputHistory: [
       { date: "2026-07-29", count: 3 },
@@ -114,8 +119,8 @@ export const staffMembers: StaffMember[] = [
     output: 3,
     lastMonth: 100000,
     thisMonth: 80000,
-    activeTaskList: [
-      { id: "tsk_301", orderRef: "ORD-2050", stage: "Sewing", dueDate: "2026-08-07" },
+    totalTaskList: [
+      { id: "tsk_301", orderRef: "ORD-2050", clientName: "Emmanuella Olusegun", dress: "Ankara gown", orderStatus: "Active", dueDate: "2026-08-07", commission: 5000 },
     ],
     recentOutputHistory: [
       { date: "2026-07-29", count: 2 },
@@ -142,7 +147,7 @@ export const staffMembers: StaffMember[] = [
     output: 0,
     lastMonth: 0,
     thisMonth: 0,
-    activeTaskList: [],
+    totalTaskList: [],
     recentOutputHistory: [
       { date: "2026-07-29", count: 0 },
       { date: "2026-07-30", count: 0 },

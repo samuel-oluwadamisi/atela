@@ -90,7 +90,7 @@ const TeamOutputScreen = () => {
 
    const {mutate, isPending:isLoadingCreate} = useCreateStaff()
    const { data: staffData } = useGetStaff()
-  const filters = ["Staff Directory", "Output Reports", "Payroll CSV"];
+  const filters = ["Staff Directory", "Output Reports", "Earnings"];
 
   const [showDialogue, setShowDialogue] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Staff Directory");
@@ -164,8 +164,8 @@ const TeamOutputScreen = () => {
           <DataTable columns={columns} data={staffData ?? []} />
         ) : activeFilter === "Output Reports" ? (
           <p>OutPut Report</p>
-        ) : activeFilter === "Payroll CSV" ? (
-          <p>Payroll CSV</p>
+        ) : activeFilter === "Earnings" ? (
+          <p>Earnings</p>
         ) : (
           <p>How did you get here??</p>
         )}
