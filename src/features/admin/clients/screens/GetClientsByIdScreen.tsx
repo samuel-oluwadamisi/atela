@@ -9,7 +9,7 @@ type ColorTypes = {
   dot: string;
 };
 
-const orderStatusColors: Record<string, ColorTypes> = {
+export const orderStatusColors: Record<string, ColorTypes> = {
   Completed: {
     bg: "bg-[#4A7C591A]",
     text: "text-[#4A7C59]",
